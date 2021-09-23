@@ -6,10 +6,14 @@ import {NavigationBar} from "./NavigationBar";
 import {MainBody} from "./MainBody";
 
 ReactDOM.render(
-  <React.StrictMode>
-      <Header />
+  <React.StrictMode >
+      <main className="min-h-screen flex flex-col">
+          <Header />
+      <div class="flex flex-row">
       <NavigationBar/>
-      <MainBody/>,
+          <MainBody/>
+      </div>
+      </main>
   </React.StrictMode>,
   document.getElementById('root')
 );
