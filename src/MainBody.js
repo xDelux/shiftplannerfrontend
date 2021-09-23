@@ -1,10 +1,11 @@
 import React from 'react';
+import {CustomContainer} from './CustomContainer'
 
 export class MainBody extends React.Component {
     render() {
         return(
             <body class="flex flex grow w-screen bg-secondary">
-                <h1>This is body</h1>
+                <CustomContainer title="Nyheder" size={"big"}/>
             </body>
         )
     }
