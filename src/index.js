@@ -7,9 +7,9 @@ import {MainBody} from "./MainBody";
 
 ReactDOM.render(
   <React.StrictMode >
-      <main className="min-h-screen flex flex-col">
+      <main className="flex flex-col min-h-screen">
           <Header />
-      <div class="flex flex-row">
+      <div class="flex flex-row flex-grow">
       <NavigationBar/>
           <MainBody/>
       </div>
