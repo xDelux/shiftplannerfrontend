@@ -7,6 +7,8 @@ import {ShiftComponent} from "./Calender_Shift_Component";
 export const Calendar = () => {
 
     const [currentMonth, setCurrentMonth] = useState(new Date())
+
+
     const [shifts, setShifts] = useState([])
 
     const nextMonth = () => {
@@ -64,10 +66,9 @@ export const Calendar = () => {
                     <div className={`col cell ${!isSameMonth(day, monthStart) ? "disabled" : ""}`} key={day}>
                         <div className="number float-right pr-3 pt-3">{formattedDate}</div>
                         <ul className='clear-right overflow-y-auto h-32 disable-scrollbars'>
-                            <li><ShiftComponent /></li>
-                            <li><ShiftComponent /></li>
-                            <li><ShiftComponent /></li>
-                            <li><ShiftComponent /></li>
+                            <li><ShiftComponent name="Shania" timeStart="08:00" timeEnd="16:00" /></li>
+                            <li><ShiftComponent name="Mikkel" timeStart="10:00" timeEnd="14:00"/></li>
+                            <li><ShiftComponent name="Mads" timeStart="??:??" timeEnd="??:??"/></li>
                         </ul>
                     </div>
                 );
