@@ -29,7 +29,7 @@ const Table = ({ columns, data }) => {
                                         className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
                                         {...column.getHeaderProps()}
                                     >
-                                        {column.render("Header")}
+                                        {column.render("HeaderColumn")}
                                     </th>
                                 ))}
                             </tr>
@@ -64,14 +64,3 @@ const Table = ({ columns, data }) => {
     );
 };
 export default Table;
-
-export class MainBody extends React.Component {
-
-    render() {
-        return(
-            <body class="flex flex grow w-screen bg-secondary">
-                <h1>This is body</h1>
-            </body>
-        )
-    }
-}
