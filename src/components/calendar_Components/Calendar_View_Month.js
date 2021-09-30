@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { addMonths, format, isSameMonth, addDays, startOfWeek, endOfWeek, startOfMonth, endOfMonth, getWeek, getISOWeek  } from "date-fns";
+import { addMonths, format, isSameMonth, addDays, startOfWeek, endOfWeek, startOfMonth, endOfMonth, getWeek, getISOWeek, isSameDay  } from "date-fns";
 import './Calendar_View__Month.css'
 import {ShiftComponent} from "./Calender_Shift_Component";
 
@@ -8,13 +8,17 @@ export const Calendar = () => {
 
     const [currentMonth, setCurrentMonth] = useState(new Date())
 
-    const [shifts, setShifts] = useState([])
+    const [shifts, setShifts] = useState([
+        {"name":"Shania", "timeStart":"08:00", "timeEnd":"16:00", "date":new Date()},
+        {"name":"Mikkel", "timeStart":"10:00", "timeEnd":"14:00", "date":addDays(new Date(), -1)},
+        {"name":"Mads", "timeStart":"??:??", "timeEnd":"??:??", "date":new Date()},
+        {"name":"Jacob", "timeStart":"09:00", "timeEnd":"16:00", "date":addDays(new Date(), -3)}]
+    )
     useEffect(() => {
         //get('/something').then((responce) => {
         // setShifts(response.data)
         // }
     }, shifts);
-
     const nextMonth = () => {
         setCurrentMonth(addMonths(currentMonth, 1))
     };
@@ -65,6 +69,10 @@ export const Calendar = () => {
 
         let days = [];
         let day = startDate;
+        console.log(shifts)
+        console.log("start day: " + startDate)
+        console.log("Object Day: " + shifts[0].date)
+        console.log(isSameDay(startDate, shifts[0].date))
         let formattedDate = "";
 
         while (day <= endDate) {
@@ -81,10 +89,9 @@ export const Calendar = () => {
                     <div className={`col cell ${!isSameMonth(day, monthStart) ? "disabled" : ""}`} key={day}>
                         <div className="number font-bold float-right pr-3 pt-3 text-xs ">{formattedDate}</div>
                         <ul className='clear-right overflow-y-auto h-32 text-base disable-scrollbars'>
-                            <li className={'float-left'}><ShiftComponent name="Shania" timeStart="08:00" timeEnd="16:00" /></li>
-                            <li className={'float-left'}><ShiftComponent name="Mikkel" timeStart="10:00" timeEnd="14:00"/></li>
-                            <li className={'float-left'}><ShiftComponent name="Mads" timeStart="??:??" timeEnd="??:??"/></li>
-                            <li className={'float-left'}><ShiftComponent name="Jacob" timeStart="09:00" timeEnd="16:00"/></li>
+                            {shifts.map(({ name, timeStart, timeEnd, date}) => (
+                                isSameDay(day, date) ? <li className={'float-left'}><ShiftComponent name={name} timeStart={timeStart} timeEnd={timeEnd} /></li>: <li/>
+                            ))}
                         </ul>
                     </div>
                 );
