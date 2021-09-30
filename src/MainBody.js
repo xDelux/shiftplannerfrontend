@@ -1,11 +1,11 @@
 import React from 'react';
-import {CustomContainer} from './CustomContainer'
+import {Calendar} from "./components/calendar_Components/Calendar_View_Month";
 
 export class MainBody extends React.Component {
     render() {
         return(
             <body class="flex flex grow w-screen bg-secondary">
-                <CustomContainer title="Nyheder" size={"big"}/>
+                <Calendar />
             </body>
         )
     }
