@@ -10,7 +10,7 @@ ReactDOM.render(
       <main className="flex flex-col min-h-screen">
           <Header />
       <div class="flex flex-row flex-grow">
-      <NavigationBar/>
+      <NavigationBar class=""/>
           <MainBody/>
       </div>
       </main>
