@@ -5,7 +5,7 @@ export class NavigationBar extends React.Component{
             return(
                 <div class="flex flex-col w-auto bg-primary text-white px-6 text-lg pt-5">
                     <ul class="">
-                        <li>Hjem</li>
+                        <li onClick="">Hjem</li>
                         <li>Mine vagter</li>
                         <li>Vagtplan</li>
                         <li>Medarbejdere</li>
