@@ -7,36 +7,33 @@ import { useHistory } from 'react-router-dom'
 
 export const NavigationBar = () => {
     const history = useHistory()
-
+    const [navbarOpen, setNavbarOpen] = React.useState(false);
     return (
-        <div className="flex flex-col w-64 bg-primary text-white px-6 text-lg pt-5 gap-y-5">
-            <ul className="flex flex-col gap-y-10 items-start justify-items-center ">
-                <li className="px-2 w-40 h-8 hover:bg-secondary rounded-sm ">
-                    <button onClick={() => history.push(`/`)}>
-                        <HomeIcon /> Hjem
-                    </button>
+        <div className="flex flex-col w-64 bg-primary text-white text-lg select-none">
+            <ul className="flex flex-col flex-fill px-2 gap-1 inline-block align-top">
+            <button onClick={() => history.push(`/`)}>
+                <li className="flex hover:bg-secondary rounded-sm px-5 py-4 ">
+                    <div className="flex flex-row"><HomeIcon/> <p className="pl-3">Hjem</p> </div>
                 </li>
-                <li className="px-2 w-40 h-8 hover:bg-secondary rounded-sm">
-                    <button onClick={() => history.push(`/calendar`)}>
-                        <AssignmentIcon /> Mine vagter
-                    </button>
+            </button>
+            <button onClick={() => history.push(`/calendar`)}>
+                <li className="flex hover:bg-secondary rounded-sm px-5 py-4">
+                    <div className="flex flex-row"><AssignmentIcon/> <p className="pl-3">Vagtplan</p> </div>
                 </li>
-                <li className="px-2 w-40 h-8 hover:bg-secondary rounded-sm">
-                    <button onClick={() => history.push(`/login`)}>
-                        <BadgeIcon /> LoginSjov
-                    </button>
+            </button>
+            <button onClick={() => history.push(`/login`)}>
+                <li className="flex hover:bg-secondary rounded-sm px-5 py-4">
+                    <div className="flex flex-row"><BadgeIcon/> <p className="pl-3">Mine vagter</p> </div>
                 </li>
-                <li className="px-2 w-40 h-8 hover:bg-secondary rounded-sm">
+            </button>
+                <li className="flex hover:bg-secondary rounded-sm px-5 py-4">
                     <button>
-                        <GroupIcon /> Medarbejdere
+                        <div className="flex flex-row"><GroupIcon/> <p className="pl-3">Medarbejere</p> </div>
                     </button>
                 </li>
             </ul>
             <div className="flex flex-grow"></div>
-            <ul className="my-7 text-center">
-                <li>Indstillinger</li>
-                <li>Log ud</li>
-            </ul>
+
         </div>
     )
 }
