@@ -43,7 +43,7 @@ export const LoginPage = () => {
                         </button>
                     </div>
                     <div className="mb-3">
-                        <button className="flex rounded-lg bg-googleColor text-googleText pr-2 py-2 m-auto w-52 hover:bg-googleHover hover:text-white">
+                        <button className="flex rounded-lg bg-googleColor text-black pr-2 py-2 m-auto w-52 hover:bg-googleHover hover:text-white">
                             <img
                                 className="rounded-full object-scale-down h-6 w-10"
                                 src="https://img.icons8.com/color/48/000000/google-logo.png"
