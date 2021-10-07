@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 body {
-  margin: 0;
-  font-family: Arvo;
+    margin: 0;
+    font-family: Arvo;
 }
-
