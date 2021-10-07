@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from "react";
-import { addMonths, format, isSameMonth, addDays, startOfWeek, endOfWeek, startOfMonth, endOfMonth, getWeek, getISOWeek, isSameDay  } from "date-fns";
-import './Calendar_View__Month.css'
-import {ShiftComponent} from "./Calender_Shift_Component";
+import { addDays, addMonths, endOfMonth, endOfWeek, format, getISOWeek, isSameDay, isSameMonth, startOfMonth, startOfWeek } from "date-fns";
+import React, { useEffect, useState } from "react";
+import './Calendar_View__Month.css';
+import { ShiftComponent } from "./Calender_Shift_Component";
 
 
 export const Calendar = () => {
@@ -44,7 +44,7 @@ export const Calendar = () => {
 
         let startDate = startOfWeek(currentMonth,{weekStartsOn: 1}) ;
         days.push(
-            <div class="border-filler" className={`h-full w-5`}>
+            <div className="border-filler" className={`h-full w-5`}>
 
             </div>
         )

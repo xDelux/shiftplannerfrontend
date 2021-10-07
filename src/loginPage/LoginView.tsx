@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-//state type
 
 type State = {
     username: string

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HomeIcon from '@mui/icons-material/Home'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import BadgeIcon from '@mui/icons-material/Badge'
@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 
 export const NavigationBar = () => {
     const history = useHistory()
-    const [navbarOpen, setNavbarOpen] = React.useState(false);
+    const [navbarOpen, setNavbarOpen] = useState(false);
     return (
         <div className="flex flex-col w-64 bg-primary text-white text-lg select-none">
             <ul className="flex flex-col flex-fill px-2 gap-1 inline-block align-top">
