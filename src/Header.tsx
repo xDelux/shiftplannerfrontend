@@ -1,14 +1,18 @@
 import MenuIcon from '@mui/icons-material/Menu'
-import React, {useCallback} from 'react'
-import SettingsIcon from "@mui/icons-material/Settings";
-import LogoutIcon from "@mui/icons-material/Logout";
+import React, {useCallback, useState} from 'react'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import SettingsIcon from '@mui/icons-material/Settings';
+import PersonIcon from '@mui/icons-material/Person';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 
 
 export const Header = (props) => {
+    let [expanded, setExpanded] = useState(false);
+
+
     return (
+
         <div className="flex items-center h-20 bg-primary ">
             <div className="w-10 h-10 mx-2 ml-5">
                 <button type="button" onClick={() => props.burgerMenuOnClick(!props.collapsed)}>
@@ -27,11 +31,25 @@ export const Header = (props) => {
                     <p className="text-sm">Shania Hau</p>
                     <p className="text-xs">Administator</p>
                 </div>
-                <button className="flex px-2">
+                <button className="flex px-2" onClick={() => setExpanded(!expanded)}>
                     <KeyboardArrowDownIcon/>
                 </button>
+                {
+                    expanded
+                        ? (
+                            <div  className="absolute top-20 right-3 h-32 w-44 bg-gray-900">
+                                <ul className="pl-3 pt-2">
+                                    <li><PersonIcon/><button>Min profil</button></li>
+                                    <li><SettingsIcon/><button>Indstillinger</button></li>
+                                    <li><DarkModeIcon/>Dark mode<switch/></li>
+                                </ul>
+
+                            </div> )
+                        : null
+                }
 
             </div>
+
         </div>
 
 
