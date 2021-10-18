@@ -1,30 +1,46 @@
-import React from 'react'
+import Axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
+import { IFruitData } from './../../../ShiftplannerServer/src/server'
 
 export const LoginPage = () => {
+    const [data, SetData] = useState<IFruitData[]>([])
+
+    const getFruit = async () => {
+        const result = (await Axios.get<IFruitData[]>('http://localhost:8080/fruit', { withCredentials: true })).data
+
+        SetData(result)
+        console.log(result)
+    }
+
+    useEffect(() => {
+        getFruit()
+    }, [])
+
     const history = useHistory()
     return (
         <div className="flex bg-secondary h-screen w-screen">
             <div className="w-auto h-auto bg-loginColor mx-auto my-auto rounded-t-xl rounded-b-xl">
                 <div className="shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
-                    <div className="mb-8 text-4xl mx-auto text-white font-sans">Shiftplanner</div>
+                    <div className="mb-8 text-4xl mx-auto text-white font-sans ">Shiftplanner</div>
                     <div className="mb-4">
                         <label className="block mx-auto text-white text-sm mb-2" htmlFor="username">
                             Username:
                         </label>
-                        <input
-                            className="w-60 bg-secondary border-borderColor border-opacity-100 appearance-none border-2 rounded p-2 text-grey-darker"
-                            id="username"
-                            type="text"
-                            placeholder="Username"
-                        />
+                            <input
+                                className="w-auto mx-auto bg-secondary border-borderColor border-opacity-100 appearance-none border-2 rounded p-2 text-grey-darker"
+                                id="username"
+                                type="text"
+                                placeholder="Username"
+                            />
                     </div>
+
                     <div className="mb-2">
                         <label className="block mx-auto text-white text-sm mb-2" htmlFor="password">
                             Password:
                         </label>
                         <input
-                            className="w-60 mx-auto bg-secondary border-borderColor border-opacity-100 appearance-none border-2 rounded p-2 text-grey-darker"
+                            className="w-auto mx-auto bg-secondary border-borderColor border-opacity-100 appearance-none border-2 rounded p-2 text-grey-darker"
                             id="password"
                             type="text"
                             placeholder="**********"
