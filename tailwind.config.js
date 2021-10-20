@@ -1,7 +1,7 @@
 // tailwind.config.js
 module.exports = {
     purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-    darkMode: false, // or 'media' or 'class'
+    darkMode: 'class', // or 'media' or 'class'
     theme: {
         extend: {
             colors: {
@@ -13,7 +13,9 @@ module.exports = {
                 googleColor: '#EEEEEE',
                 darkText: '#616467',
                 hoverEffect: '#213869',
-                googleHover: '#817F7F'
+                googleHover: '#817F7F',
+                lightPrimary: '#F35F5F',
+                lightSecondary: '#F19C9C'
             },
         },
     },

@@ -1,6 +1,7 @@
 import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
+// @ts-ignore
 import { IFruitData } from './../../../ShiftplannerServer/src/server'
 
 export const LoginPage = () => {
