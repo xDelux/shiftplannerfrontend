@@ -20,7 +20,7 @@ export const MainBody = () => {
                     <Header collapsed={navBarCollapsed} burgerMenuOnClick={setNavBarCollapsed} />
                     <div className="flex flex-row flex-grow">
                         <NavigationBar collapsed={navBarCollapsed} />
-                        <div className="flex flex grow w-screen bg-secondary">
+                        <div className="flex flex grow w-screen bg-white dark:bg-secondary transition duration-500 ease-in-out ">
                             <Route exact path="/" render={() => <Home />} />
                             <Route exact path="/testing" render={() => <Login />} />
                             <Route exact path="/calendar" render={() => <Calendar />} />
