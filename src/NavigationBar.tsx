@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import HomeIcon from '@mui/icons-material/Home'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import BadgeIcon from '@mui/icons-material/Badge'
@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom'
 
 
 export const NavigationBar = (props) => {
+    let [collapsed, setCollapsed] = useState(false);
     const history = useHistory()
 
     if(!props.collapsed) {

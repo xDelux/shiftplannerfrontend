@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './index.css'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Calendar } from './components/calendar_Components/Calendar_View_Month'
 import { Header } from './Header'
@@ -8,15 +9,18 @@ import { Login } from './loginPage/LoginView'
 import { LoginPage } from './loginPage/LoginPage'
 import { NavigationBar } from './NavigationBar'
 
+
 export const MainBody = () => {
     let [navBarCollapsed, setNavBarCollapsed] = useState(false)
 
     return (
         <BrowserRouter>
             <Switch>
+
                 <Route exact path="/login" render={() => <LoginPage/>} />
 
                 <div className="flex flex-col min-h-screen">
+
                     <Header collapsed={navBarCollapsed} burgerMenuOnClick={setNavBarCollapsed} />
                     <div className="flex flex-row flex-grow">
                         <NavigationBar collapsed={navBarCollapsed} />
