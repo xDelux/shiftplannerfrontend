@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { CalenderDay} from './components/calendar_Components/Calender_View_Day'
+import { CalendarDay} from './components/calendar_Components/Calender_View_Day'
 import { Calendar } from './components/calendar_Components/Calendar_View_Month'
 import { Header } from './Header'
 import { Home } from './Home'
@@ -28,6 +28,7 @@ export const MainBody = () => {
                             <Route exact path="/" render={() => <Home />} />
                             <Route exact path="/testing" render={() => <Login />} />
                             <Route exact path="/calendar" render={() => <Calendar />} />
+                            <Route exact path="/calendarDay" render={() => <CalendarDay />} />
                         </div>
                     </div>
                 </div>

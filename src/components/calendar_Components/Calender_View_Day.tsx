@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 import { addMonths, format, isSameMonth, addDays, startOfWeek, endOfWeek, startOfMonth, endOfMonth, getWeek, getISOWeek, isSameDay  } from "date-fns";
 import {ShiftComponent} from "./Calender_Shift_Component";
+import {Link} from "react-router-dom";
 
-export const CalenderDay = () => {
+export const CalendarDay = () => {
 
     const [currentDay, setCurrentDay] = useState(new Date());
 
@@ -32,7 +33,7 @@ export const CalenderDay = () => {
     }
 
 
-    function renderCells() {
+    /*function renderCells() {
         let columns = [] as any;
 
 
@@ -60,30 +61,43 @@ export const CalenderDay = () => {
             </div>
 
         )
-    }
+    }*/
         function renderGrid() {
 
             let columns = [] as any;
 
-
-            for (let i = 1; i <= 24; i++) {
+            let counter = 6;
+            while (true) {
                 columns.push(
-                    <div className="text-black font-bold p-3 text-center"> {i}:00 </div>
+                    <div className="text-black font-bold p-3 justify-center"> {counter}:00 </div>
                 )
+                if(counter == 24) {
+                    break;
+                }
+                counter++;
             }
 
 
             return (
                 <div className="mx-5 mt-5 flex flex-col-reverse">
-                    <div className="flex flex-row items-center border-2 border-black divide-x-2 divide-black bg-darkgrey order-5">
+                    <div className="flex flex-row border-2 border-black divide-x-2 divide-black bg-darkgrey">
                             {columns}
                     </div>
-                    <div className="grid grid-cols-24 w- divide-y-2 divide-y-2 border-2 border-black bg-lightgrey place-items-center span-1">
+                    <div className="flex flex-col w-full h-full border-t-0
+                        border-black bg-lightgrey">
+                        <ul className="divide-y-2 divide-black">
+                            <li>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                    {/*<div className="grid grid-cols-24 w- divide-y-2 divide-y-2 border-2 border-black bg-lightgrey place-items-center span-1">
                             <div className="text-white font-bold"> 00</div>
                             <div className="text-white font-bold"> 00</div>
                             <div className="text-white font-bold"> 00</div>
 
-                        </div>
+                    </div>*/}
 
                 </div>
 

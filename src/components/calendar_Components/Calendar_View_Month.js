@@ -2,11 +2,14 @@ import { addDays, addMonths, endOfMonth, endOfWeek, format, getISOWeek, isSameDa
 import React, { useEffect, useState } from "react";
 import './Calendar_View__Month.css';
 import { ShiftComponent } from "./Calender_Shift_Component";
-
+import {Route, useHistory} from 'react-router-dom'
+import {CalendarDay} from "./Calender_View_Day";
+import { Link } from 'react-router-dom'
 
 export const Calendar = () => {
 
     const [currentMonth, setCurrentMonth] = useState(new Date())
+    const history = useHistory()
 
     const [shifts, setShifts] = useState([
         {"name":"Shania", "timeStart":"08:00", "timeEnd":"16:00", "date":new Date()},
@@ -19,6 +22,11 @@ export const Calendar = () => {
         // setShifts(response.data)
         // }
     }, shifts);
+
+    const handleRoute = ({onClick}) => {
+        history.push(`/calenderDay`);
+    };
+
     const nextMonth = () => {
         setCurrentMonth(addMonths(currentMonth, 1))
     };
@@ -86,11 +94,17 @@ export const Calendar = () => {
             for (let i = 0; i < 7; i++) {
                 formattedDate = format(day, dateFormat);
                 days.push(
-                    <div className={`col cell ${!isSameMonth(day, monthStart) ? "disabled" : ""}`} key={day}>
+                    <div className={`col cell ${!isSameMonth(day, monthStart) ? "disabled" : ""}`} key={day} onClick={() => history.push('/calendarDay')}>
                         <div className="number font-bold float-right pr-3 pt-3 text-xs ">{formattedDate}</div>
-                        <ul className='clear-right overflow-y-auto h-32 text-base disable-scrollbars'>
+                        <ul className='clear-right overflow-y-auto h-32 text-base disable-scrollbars' >
+
                             {shifts.map(({ name, timeStart, timeEnd, date}) => (
-                                isSameDay(day, date) ? <li className={'float-left'}><ShiftComponent name={name} timeStart={timeStart} timeEnd={timeEnd} /></li>: <li/>
+                                // Link for routing to day page
+                                isSameDay(day, date) ? <li className={'float-left'}>
+                                    <Link to="/calendarDay">
+                                        <ShiftComponent name={name} timeStart={timeStart} timeEnd={timeEnd} />
+                                    </Link> </li>
+                                    : <li/>
                             ))}
                         </ul>
                     </div>
