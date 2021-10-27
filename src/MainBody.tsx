@@ -16,7 +16,6 @@ export const MainBody = () => {
     return (
         <BrowserRouter>
             <Switch>
-
                 <Route exact path="/login" render={() => <LoginPage/>} />
 
                 <div className="flex flex-col min-h-screen">
