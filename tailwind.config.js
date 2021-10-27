@@ -15,7 +15,9 @@ module.exports = {
                 hoverEffect: '#213869',
                 googleHover: '#817F7F',
                 lightPrimary: '#F35F5F',
-                lightSecondary: '#F19C9C'
+                lightSecondary: '#F19C9C',
+                lightgrey: '#C4C4C4',
+                darkgrey: '#ADACAB'
             },
         },
     },
