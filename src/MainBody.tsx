@@ -5,7 +5,6 @@ import { CalendarDay } from './components/calendar_Components/Calender_View_Day'
 import { Header } from './Header'
 import { Home } from './Home'
 import { LoginPage } from './loginPage/LoginPage'
-/* import { TestingFruit } from './serverFruit/testingFruit' */
 import { Login } from './loginPage/LoginView'
 import { NavigationBar } from './NavigationBar'
 
