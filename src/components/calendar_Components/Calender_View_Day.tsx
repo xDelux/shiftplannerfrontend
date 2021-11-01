@@ -83,37 +83,28 @@ export const CalendarDay = () => {
 
 
             return (
-                <div className="mx-5 mt-5 flex flex-col-reverse">
-                    <div className="flex flex-row border-2 border-black divide-x-2 divide-black bg-darkgrey">
+                <div className="mx-5 mt-5 flex-grow-1 flex-shrink-1 overflow-x-scroll">
+                    <div className="flex border-2 border-black divide-x-2 divide-black bg-darkgrey ">
                             {columns}
                     </div>
-                    <div className="flex flex-col w-full h-full border-t-0
+                    <div className="flex flex-col border-2
                         border-black bg-lightgrey">
-                        <ul className="divide-y-2 divide-black">
-                            <li>
-
-                            </li>
-
-                        </ul>
+                        <div className="border-2 border-blue-500">
+                            test
+                        </div>
+                        <div className="">
+                            test
+                        </div>
+                        <div className="">
+                            yoikk
+                        </div>
                     </div>
-                    {/*<div className="grid grid-cols-24 w- divide-y-2 divide-y-2 border-2 border-black bg-lightgrey place-items-center span-1">
-                            <div className="text-white font-bold"> 00</div>
-                            <div className="text-white font-bold"> 00</div>
-                            <div className="text-white font-bold"> 00</div>
-
-                    </div>*/}
-
                 </div>
 
             )
         }
 
     return (
-        <div className="">
-            {/*{renderHeader()}*/}
-            {/*{renderWorkers()}*/}
-            {/*{renderCells()}*/}
-            {renderGrid()}
-        </div>
+        renderGrid()
     );
 }
