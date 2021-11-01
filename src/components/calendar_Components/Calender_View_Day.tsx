@@ -37,21 +37,20 @@ export const CalendarDay = () => {
     }
 
 
-    /*function renderCells() {
+    function renderCells() {
         let columns = [] as any;
 
 
         for (let i = 1; i <= 24; i++) {
             columns.push(
-                <div className="span-1 text-black font-bold flex-grow p-5 text-center"> {i}:00 </div>
+                <div className="text-black font-bold p-3 justify-center"> {i}:00 </div>
             )
         }
 
-
         return (
-            <div className="mx-5 mt-5">
+            <div className="mx-5 mt-5 bg-">
                 <div
-                    className="flex items-center flex-row flex-nowrap border-2 border-black divide-x-2 divide-black bg-darkgrey">
+                    className="flex flex-shrink items-center flex-row border-2 border-black divide-x-2 divide-black bg-darkgrey">
                     {columns}
                 </div>
                 <div className="relative flex flex-col border-2 border-black divide-y divide-black bg-lightgrey">
@@ -65,46 +64,49 @@ export const CalendarDay = () => {
             </div>
 
         )
-    }*/
-        function renderGrid() {
-
-            let columns = [] as any;
-
-            let counter = 6;
-            while (true) {
-                columns.push(
-                    <div className="text-black font-bold p-3 justify-center"> {counter}:00 </div>
-                )
-                if(counter == 24) {
-                    break;
-                }
-                counter++;
-            }
-
-
-            return (
-                <div className="mx-5 mt-5 flex-grow-1 flex-shrink-1 overflow-x-scroll">
-                    <div className="flex border-2 border-black divide-x-2 divide-black bg-darkgrey ">
-                            {columns}
-                    </div>
-                    <div className="flex flex-col border-2
-                        border-black bg-lightgrey">
-                        <div className="border-2 border-blue-500">
-                            test
-                        </div>
-                        <div className="">
-                            test
-                        </div>
-                        <div className="">
-                            yoikk
-                        </div>
-                    </div>
-                </div>
-
-            )
-        }
+    }
+        // function renderGrid() {
+        //
+        //     let columns = [] as any;
+        //
+        //     let counter = 6;
+        //     while (true) {
+        //         columns.push(
+        //             <div className="text-black font-bold p-3 justify-center"> {counter}:00 </div>
+        //         )
+        //         if(counter == 24) {
+        //             break;
+        //         }
+        //         counter++;
+        //     }
+        //
+        //
+        //     return (
+        //         <div className="mx-5 mt-5 flex-grow-1 flex-shrink-1 overflow-x-scroll">
+        //             <div className="flex border-2 border-black divide-x-2 divide-black bg-darkgrey ">
+        //                     {columns}
+        //             </div>
+        //             <div className="flex flex-col border-2
+        //                 border-black bg-lightgrey">
+        //                 <div className="border-2 border-blue-500">
+        //                     test
+        //                 </div>
+        //                 <div className="">
+        //                     test
+        //                 </div>
+        //                 <div className="">
+        //                     yoikk
+        //                 </div>
+        //             </div>
+        //         </div>
+        //
+        //     )
+        // }
 
     return (
-        renderGrid()
+        <div className="flex flex-col bg-blue-200">
+            {renderHeader()}
+            {renderCells()}
+        </div>
     );
 }
