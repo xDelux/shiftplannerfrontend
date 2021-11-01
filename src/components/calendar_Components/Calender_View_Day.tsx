@@ -8,13 +8,13 @@ export const CalendarDay = () => {
     const [currentDay, setCurrentDay] = useState(new Date());
 
     const [shifts, setShifts] = useState([
-        {"name":"Shania", "timeStart":"08:00", "timeEnd":"16:00", "date":new Date()},
-        {"name":"Mikkel", "timeStart":"10:00", "timeEnd":"14:00", "date":addDays(new Date(), -1)},
-        {"name":"Mads", "timeStart":"??:??", "timeEnd":"??:??", "date":new Date()},
-        {"name":"Jacob", "timeStart":"09:00", "timeEnd":"16:00", "date":addDays(new Date(), -3)}])
+        {"name":"Shania", "timeStart":"08:00", "timeEnd":"16:00"},
+        {"name":"Mikkel", "timeStart":"10:00", "timeEnd":"14:00"},
+        {"name":"Mads", "timeStart":"??:??", "timeEnd":"??:??"},
+        {"name":"Jacob", "timeStart":"09:00", "timeEnd":"16:00"}])
 
 
-    const test = () => {
+    const setupColoumns = () => {
 
     }
 
@@ -28,7 +28,7 @@ export const CalendarDay = () => {
     const renderHeader = () => {
         const dateFormat = "B..BBB";
         return (
-            <div className="header">
+            <div className="header bg-gray-600">
                 <div className="icon cursor-pointer ml-5" onClick={prevDay}> chevron_left </div>
                 <span className=""> {format(currentDay, dateFormat)} </span>
                 <div className="icon cursor-pointer" onClick={nextDay}> chevron_right </div>
@@ -37,29 +37,33 @@ export const CalendarDay = () => {
     }
 
 
-    function renderCells() {
+    
+    const renderCells = () => {
         let columns = [] as any;
 
-
         for (let i = 1; i <= 24; i++) {
-            columns.push(
-                <div className="text-black font-bold p-3 justify-center"> {i}:00 </div>
-            )
+            if(i != 1) {
+                columns.push(
+                    <div className="border-l-2 text-center text-black text-sm sm:text-base font-bold p-1 sm:p-2"> {i}:00 </div>
+                )
+            } else if (i == 1) {
+                columns.push(
+                    <div className="text-center text-black text-sm sm:text-base font-bold p-1 sm:p-2"> {i}:00 </div>
+                )
+            }
+            
         }
 
         return (
-            <div className="mx-5 mt-5 bg-">
-                <div
-                    className="flex flex-shrink items-center flex-row border-2 border-black divide-x-2 divide-black bg-darkgrey">
+            <div className="flex flex-col flex-none mx-5 mt-5 bg-sky-100 ">
+                <div className="grid grid-cols-24 overflow-y-auto gap-x-0 gap-y-4 pb-4 border-black border-2 bg-white">
                     {columns}
-                </div>
-                <div className="relative flex flex-col border-2 border-black divide-y divide-black bg-lightgrey">
-                    <div className="">
-                        <div className=" text-white font-bold col-span-5"> 00</div>
-                    </div>
-
-                    <div className="left-10 text-white font-bold"> 00</div>
-
+                    
+                    
+                    {shifts.map((user, index) => (
+                        <div className="flex col-span-full p-3 bg-amber-200 text-black justify-center" key={user.name}> {user.name} </div>
+                    ))}
+                            
                 </div>
             </div>
 
@@ -104,7 +108,7 @@ export const CalendarDay = () => {
         // }
 
     return (
-        <div className="flex flex-col bg-blue-200">
+        <div className="flex flex-col flex-auto bg-sky-400">
             {renderHeader()}
             {renderCells()}
         </div>
