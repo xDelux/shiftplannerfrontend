@@ -14,6 +14,10 @@ export const CalendarDay = () => {
         {"name":"Jacob", "timeStart":"09:00", "timeEnd":"16:00", "date":addDays(new Date(), -3)}])
 
 
+    const test = () => {
+
+    }
+
     function nextDay() {
         setCurrentDay(addDays(currentDay, +1))
     }
