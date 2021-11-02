@@ -28,12 +28,12 @@ export const LoginPage = () => {
                         <label className="block mx-auto text-white text-sm mb-2" htmlFor="username">
                             Username:
                         </label>
-                            <input
-                                className="w-auto mx-auto bg-secondary border-borderColor border-opacity-100 appearance-none border-2 rounded p-2 text-grey-darker"
-                                id="username"
-                                type="text"
-                                placeholder="Username"
-                            />
+                        <input
+                            className="w-auto mx-auto bg-secondary border-borderColor border-opacity-100 appearance-none border-2 rounded p-2 text-grey-darker"
+                            id="username"
+                            type="text"
+                            placeholder="Username"
+                        />
                     </div>
 
                     <div className="mb-2">
