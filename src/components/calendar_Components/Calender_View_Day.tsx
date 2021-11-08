@@ -6,6 +6,8 @@ import {Link} from "react-router-dom";
 export const CalendarDay = () => {
 
     const [currentDay, setCurrentDay] = useState(new Date());
+    
+    
 
     const [shifts, setShifts] = useState([
         {"name":"Shania", "timeStart":"08:00", "timeEnd":"16:00"},
@@ -14,8 +16,12 @@ export const CalendarDay = () => {
         {"name":"Jacob", "timeStart":"09:00", "timeEnd":"16:00"}])
 
 
-    const setupColoumns = () => {
-
+    const setupCols = () => {
+        let cols = [] as any;
+        for (let i = 0; i < 24; i++) {
+            cols.push(<div className="flex p-3 bg-amber-200 text-black justify-center col-span-1"> test </div>)
+        }
+        return cols;
     }
 
     function nextDay() {
@@ -41,74 +47,41 @@ export const CalendarDay = () => {
     const renderCells = () => {
         let columns = [] as any;
 
-        for (let i = 1; i <= 24; i++) {
-            if(i != 1) {
+        for (let i = 4; i <= 27; i++) {
+            if(i != 4) {
                 columns.push(
-                    <div className="border-l-2 text-center text-black text-sm sm:text-base font-bold p-1 sm:p-2"> {i}:00 </div>
+                    <div className="border-l-2 border-black text-center text-black text-sm sm:text-base font-bold p-1 sm:p-2"> {i%24}:00 </div>
                 )
-            } else if (i == 1) {
+            } else {
                 columns.push(
-                    <div className="text-center text-black text-sm sm:text-base font-bold p-1 sm:p-2"> {i}:00 </div>
+                    <div className="text-center text-black text-sm sm:text-base font-bold p-1 sm:p-2"> {i%24}:00 </div>
                 )
             }
             
         }
 
         return (
-            <div className="flex flex-col flex-none mx-5 mt-5 bg-sky-100 ">
-                <div className="grid grid-cols-24 overflow-y-auto gap-x-0 gap-y-4 pb-4 border-black border-2 bg-white">
+            <div className="flex flex-col flex-none max-h-screen mx-5 mt-5 bg-sky-100 ">
+                <div className="grid grid-cols-24 overflow-y-auto overflow-x-hidden gap-x-0 gap-y-2 pb-1 grid-flow-row border border-black bg-darkgrey">
                     {columns}
                     
+                    {shifts.map((user, index) => {
+                        if(index%2 == 0) {
+                            return <div className="flex rounded-lg ml-1 border-2 border-black col-start-1 col-end-8 p-3 bg-amber-200 text-black font-bold justify-center" key={user.name}> {user.name} {index} </div> 
+                        } else {
+                            return <div className="flex rounded-lg ml-1 border-2 border-black col-start-4 col-end-12 p-3 bg-sky-200 text-black font-bold justify-center" key={user.name}> {user.name} {index} </div>
+                        }
+                    })}
                     
-                    {shifts.map((user, index) => (
-                        <div className="flex col-span-full p-3 bg-amber-200 text-black justify-center" key={user.name}> {user.name} </div>
-                    ))}
-                            
+                             
                 </div>
             </div>
 
         )
     }
-        // function renderGrid() {
-        //
-        //     let columns = [] as any;
-        //
-        //     let counter = 6;
-        //     while (true) {
-        //         columns.push(
-        //             <div className="text-black font-bold p-3 justify-center"> {counter}:00 </div>
-        //         )
-        //         if(counter == 24) {
-        //             break;
-        //         }
-        //         counter++;
-        //     }
-        //
-        //
-        //     return (
-        //         <div className="mx-5 mt-5 flex-grow-1 flex-shrink-1 overflow-x-scroll">
-        //             <div className="flex border-2 border-black divide-x-2 divide-black bg-darkgrey ">
-        //                     {columns}
-        //             </div>
-        //             <div className="flex flex-col border-2
-        //                 border-black bg-lightgrey">
-        //                 <div className="border-2 border-blue-500">
-        //                     test
-        //                 </div>
-        //                 <div className="">
-        //                     test
-        //                 </div>
-        //                 <div className="">
-        //                     yoikk
-        //                 </div>
-        //             </div>
-        //         </div>
-        //
-        //     )
-        // }
 
     return (
-        <div className="flex flex-col flex-auto bg-sky-400">
+        <div className="flex flex-col flex-auto bg-white">
             {renderHeader()}
             {renderCells()}
         </div>
