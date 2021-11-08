@@ -6,7 +6,6 @@ import { Header } from './Header'
 import { Home } from './Home'
 import { LoginPage } from './loginPage/LoginPage'
 /* import { TestingFruit } from './serverFruit/testingFruit' */
-import { Login } from './loginPage/LoginView'
 import { NavigationBar } from './NavigationBar'
 
 export const MainBody = () => {
@@ -23,7 +22,6 @@ export const MainBody = () => {
                         <NavigationBar collapsed={navBarCollapsed} />
                         <div className="flex w-screen bg-white dark:bg-secondary transition duration-500 ease-in-out ">
                             <Route exact path="/" render={() => <Home />} />
-                            <Route exact path="/testing" render={() => <Login />} />
                             <Route exact path="/calendar" render={() => <Calendar />} />
                             <Route exact path="/calendarDay" render={() => <CalendarDay />} />
                         </div>
