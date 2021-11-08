@@ -1,24 +1,22 @@
-import Axios from 'axios'
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { Login, Register } from './LoginJS'
-import { useHistory } from 'react-router'
-// @ts-ignore
-import { IFruitData } from './../../ShiftplannerServer/src/server'
-import { UserContext } from '../Context/UserContext'
-
 import Button from '@material-tailwind/react/Button'
 import Popover from '@material-tailwind/react/Popover'
+import PopoverBody from '@material-tailwind/react/PopoverBody'
 import PopoverContainer from '@material-tailwind/react/PopoverContainer'
 import PopoverHeader from '@material-tailwind/react/PopoverHeader'
-import PopoverBody from '@material-tailwind/react/PopoverBody'
+import Axios from 'axios'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useHistory } from 'react-router'
+import { authUser } from '../../../ShiftplannerServer/src/server'
+import { UserContext } from '../Context/UserContext'
 
 export const LoginPage = () => {
+    //@ts-ignore
     const { user } = useContext(UserContext)
 
-    const [data, SetData] = useState<IFruitData[]>([])
+    const [data, SetData] = useState<authUser[]>([])
 
     const getFruit = async () => {
-        const result = (await Axios.get<IFruitData[]>('http://localhost:8080/fruit', { withCredentials: true })).data
+        const result = (await Axios.get<authUser[]>('http://localhost:8080/fruit', { withCredentials: true })).data
 
         SetData(result)
         console.log(result)
@@ -89,7 +87,7 @@ export const LoginPage = () => {
                     <div className="mb-3">
                         <button
                             className="flex rounded-lg bg-googleColor text-black pr-2 py-2 m-auto w-52 hover:bg-googleHover hover:text-white"
-                            onClick={() => console.log(user.id)}
+                            onClick={() => console.log(user.id + user.role)}
                         >
                             <img
                                 className="rounded-full object-scale-down h-6 w-10"
