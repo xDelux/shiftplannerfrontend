@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from "react";
 import { addMonths, format, isSameMonth, addDays, startOfWeek, endOfWeek, startOfMonth, endOfMonth, getWeek, getISOWeek, isSameDay  } from "date-fns";
-import {ShiftComponent} from "./Calender_Shift_Component";
 import {Link} from "react-router-dom";
-
+import Axios from 'axios'
+// @ts-ignore
+import { IFruitData, User } from './../../ShiftplannerServer/src/server'
 export const CalendarDay = () => {
 
     const [currentDay, setCurrentDay] = useState(new Date());
     
-    
+    console.log(currentDay)
 
     const [shifts, setShifts] = useState([
         {"name":"Shania", "timeStart":"08:00", "timeEnd":"16:00"},
@@ -15,14 +16,36 @@ export const CalendarDay = () => {
         {"name":"Mads", "timeStart":"??:??", "timeEnd":"??:??"},
         {"name":"Jacob", "timeStart":"09:00", "timeEnd":"16:00"}])
 
+    const [users, setUsers] = useState<User[]>([])
 
-    const setupCols = () => {
-        let cols = [] as any;
-        for (let i = 0; i < 24; i++) {
-            cols.push(<div className="flex p-3 bg-amber-200 text-black justify-center col-span-1"> test </div>)
-        }
-        return cols;
+    // const getUsers = async () => {
+    //     const result = (await Axios.get<User[]>('http://localhost:8080/fetchUsersForDay', {}, { withCredentials: true })).data
+
+    //     setUsers(result)
+    //     console.log(result)
+    // }
+
+    // useEffect(() => {
+    //     getUsers()
+    // }, [])
+
+   
+    const renderUsers = (users: User[]) => {
+        
+        
+        
+        return (
+            <div>
+                
+            </div>
+        )
     }
+    
+    
+    
+    
+    
+    
 
     function nextDay() {
         setCurrentDay(addDays(currentDay, +1))
@@ -72,8 +95,7 @@ export const CalendarDay = () => {
                             return <div className="flex rounded-lg ml-1 border-2 border-black col-start-4 col-end-12 p-3 bg-sky-200 text-black font-bold justify-center" key={user.name}> {user.name} {index} </div>
                         }
                     })}
-                    
-                             
+                
                 </div>
             </div>
 
