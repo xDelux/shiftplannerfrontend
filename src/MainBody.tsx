@@ -5,8 +5,9 @@ import { CalendarDay } from './components/calendar_Components/Calender_View_Day'
 import { Header } from './Header'
 import { Home } from './Home'
 import { LoginPage } from './loginPage/LoginPage'
+import {employeeTable} from './components/table_Components/Table'
+
 /* import { TestingFruit } from './serverFruit/testingFruit' */
-import { Login } from './loginPage/LoginView'
 import { NavigationBar } from './NavigationBar'
 
 export const MainBody = () => {
@@ -23,9 +24,9 @@ export const MainBody = () => {
                         <NavigationBar collapsed={navBarCollapsed} />
                         <div className="flex flex grow w-screen bg-white dark:bg-secondary transition duration-500 ease-in-out ">
                             <Route exact path="/" render={() => <Home />} />
-                            <Route exact path="/testing" render={() => <Login />} />
                             <Route exact path="/calendar" render={() => <Calendar />} />
                             <Route exact path="/calendarDay" render={() => <CalendarDay />} />
+                            <Route exact path="/employeeTable" render={() => <employeeTable />} />
                         </div>
                     </div>
                 </div>

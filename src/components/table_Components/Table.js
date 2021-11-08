@@ -1,7 +1,37 @@
 import {useTable} from 'react-table'
 import React from 'react'
 
-export const TableComponent = () => {
+export const employeeTable = () => {
+
+    const columns = React.useMemo(
+        () => [
+            {
+                Header: "Image",
+                accessor: "image",
+            },
+            {
+                Header: "Name",
+                accessor: "username",
+            },
+            {
+                Header: "Birthday",
+                accessor: "bday",
+            },
+            {
+                Header: "Job-Position",
+                accessor: "jobposition",
+            },
+            {
+                Header: "Phone",
+                accessor: "phone",
+            },
+            {
+                Header: "Mail",
+                accessor: "mail",
+            },
+        ],
+        []
+    )
 
     const data = React.useMemo(
         () => [
@@ -47,36 +77,6 @@ export const TableComponent = () => {
                 jobposition: 'din mor',
                 phone: '12345678',
                 mail: ' email@email.com'
-            },
-        ],
-        []
-    )
-
-    const columns = React.useMemo(
-        () => [
-            {
-                Header: "Image",
-                accessor: "image",
-            },
-            {
-                Header: "Name",
-                accessor: "username",
-            },
-            {
-                Header: "Birthday",
-                accessor: "bday",
-            },
-            {
-                Header: "Job-Position",
-                accessor: "jobposition",
-            },
-            {
-                Header: "Phone",
-                accessor: "phone",
-            },
-            {
-                Header: "Mail",
-                accessor: "mail",
             },
         ],
         []
