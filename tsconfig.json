@@ -17,5 +17,5 @@
         "noFallthroughCasesInSwitch": true,
         "noImplicitAny": false
     },
-    "include": ["src", "./../../ShiftplannerServer/src/server"]
+    "include": ["./src/**/*.ts"]
 }

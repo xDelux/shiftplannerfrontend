@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import './Calendar_View__Month.css';
 import { ShiftComponent } from "./Calender_Shift_Component";
 import {Route, useHistory} from 'react-router-dom'
-import {CalendarDay} from "./Calender_View_Day";
+import {CalendarDay} from "../Calendar_Day/Calender_View_Day";
 import { Link } from 'react-router-dom'
 
 export const Calendar = () => {
