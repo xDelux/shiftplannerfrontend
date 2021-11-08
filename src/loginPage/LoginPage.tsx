@@ -1,8 +1,15 @@
 import Axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import {Login, Register} from './LoginJS'
 import { useHistory } from 'react-router'
 // @ts-ignore
 import { IFruitData } from './../../ShiftplannerServer/src/server'
+
+import Button from "@material-tailwind/react/Button";
+import Popover from "@material-tailwind/react/Popover";
+import PopoverContainer from "@material-tailwind/react/PopoverContainer";
+import PopoverHeader from "@material-tailwind/react/PopoverHeader";
+import PopoverBody from "@material-tailwind/react/PopoverBody";
 
 export const LoginPage = () => {
     const [data, SetData] = useState<IFruitData[]>([])
@@ -17,6 +24,24 @@ export const LoginPage = () => {
     useEffect(() => {
         getFruit()
     }, [])
+    
+    
+    const butRef = useRef();
+    
+    const registerView = () => {
+        <Popover placement="top" ref={butRef}>
+            <PopoverContainer>
+                <PopoverHeader> Register </PopoverHeader>
+                <PopoverBody>
+                    <div>
+                        test
+                    </div>
+                </PopoverBody>
+            </PopoverContainer>
+        </Popover>
+        
+    }
+    
 
     const history = useHistory()
     return (
@@ -29,7 +54,7 @@ export const LoginPage = () => {
                             Username:
                         </label>
                         <input
-                            className="w-auto mx-auto bg-secondary border-borderColor border-opacity-100 appearance-none border-2 rounded p-2 text-grey-darker md:text-white"
+                            className="w-full mx-auto bg-secondary border-borderColor border-opacity-100 appearance-none border-2 rounded p-2 text-grey-darker md:text-white"
                             id="username"
                             type="text"
                             placeholder="Username"
@@ -41,15 +66,18 @@ export const LoginPage = () => {
                             Password:
                         </label>
                         <input
-                            className="w-auto mx-auto bg-secondary border-borderColor border-opacity-100 appearance-none border-2 rounded p-2 text-grey-darker md:text-white"
+                            className="w-full mx-auto bg-secondary border-borderColor border-opacity-100 appearance-none border-2 rounded p-2 text-grey-darker md:text-white"
                             id="password"
                             type="password"
                             placeholder="**********"
                         />
                     </div>
-                    <div className="mb-3">
-                        <p className="block text-white text-xs underline mb-2">Forgot password?</p>
+                    <div className="mb-3 flex justify-between">
+                        <p className="text-white text-xs underline">Forgot password?</p>
+                        <Button className=" text-white text-xs underline" onClick={registerView} ref={butRef}>Register</Button>
                     </div>
+                    
+                
                     <div className="mb-3">
                         <button className="flex rounded-lg bg-facebookColor text-white pr-2 py-2 m-auto w-52 hover:bg-hoverEffect">
                             <img

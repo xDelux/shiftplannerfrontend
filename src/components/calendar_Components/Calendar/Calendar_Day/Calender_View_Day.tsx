@@ -1,15 +1,14 @@
 import React, {useState, useEffect} from "react";
 import { addMonths, format, isSameMonth, addDays, startOfWeek, endOfWeek, startOfMonth, endOfMonth, getWeek, getISOWeek, isSameDay  } from "date-fns";
-import {ShiftComponent} from "./Calender_Shift_Component";
 import {Link} from "react-router-dom";
 import Axios from 'axios'
 // @ts-ignore
-import { IFruitData } from './../../ShiftplannerServer/src/server'
+import { IFruitData, User } from './../../ShiftplannerServer/src/server'
 export const CalendarDay = () => {
 
     const [currentDay, setCurrentDay] = useState(new Date());
     
-    
+    console.log(currentDay)
 
     const [shifts, setShifts] = useState([
         {"name":"Shania", "timeStart":"08:00", "timeEnd":"16:00"},
@@ -17,21 +16,23 @@ export const CalendarDay = () => {
         {"name":"Mads", "timeStart":"??:??", "timeEnd":"??:??"},
         {"name":"Jacob", "timeStart":"09:00", "timeEnd":"16:00"}])
 
-    const [data, SetData] = useState<IFruitData[]>([])
+    const [users, setUsers] = useState<User[]>([])
 
-    const getFruit = async () => {
-        const result = (await Axios.get<IFruitData[]>('http://localhost:8080/fruit', { withCredentials: true })).data
+    // const getUsers = async () => {
+    //     const result = (await Axios.get<User[]>('http://localhost:8080/fetchUsersForDay', {}, { withCredentials: true })).data
 
-        SetData(result)
-        console.log(result)
-    }
+    //     setUsers(result)
+    //     console.log(result)
+    // }
 
-    useEffect(() => {
-        getFruit()
-    }, [])
+    // useEffect(() => {
+    //     getUsers()
+    // }, [])
 
    
-    const renderFruit = (params) => {
+    const renderUsers = (users: User[]) => {
+        
+        
         
         return (
             <div>
