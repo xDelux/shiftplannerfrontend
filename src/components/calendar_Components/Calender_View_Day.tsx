@@ -6,14 +6,23 @@ import {Link} from "react-router-dom";
 export const CalendarDay = () => {
 
     const [currentDay, setCurrentDay] = useState(new Date());
+    
+    
 
     const [shifts, setShifts] = useState([
-        {"name":"Shania", "timeStart":"08:00", "timeEnd":"16:00", "date":new Date()},
-        {"name":"Mikkel", "timeStart":"10:00", "timeEnd":"14:00", "date":addDays(new Date(), -1)},
-        {"name":"Mads", "timeStart":"??:??", "timeEnd":"??:??", "date":new Date()},
-        {"name":"Jacob", "timeStart":"09:00", "timeEnd":"16:00", "date":addDays(new Date(), -3)}])
+        {"name":"Shania", "timeStart":"08:00", "timeEnd":"16:00"},
+        {"name":"Mikkel", "timeStart":"10:00", "timeEnd":"14:00"},
+        {"name":"Mads", "timeStart":"??:??", "timeEnd":"??:??"},
+        {"name":"Jacob", "timeStart":"09:00", "timeEnd":"16:00"}])
 
 
+    const setupCols = () => {
+        let cols = [] as any;
+        for (let i = 0; i < 24; i++) {
+            cols.push(<div className="flex p-3 bg-amber-200 text-black justify-center col-span-1"> test </div>)
+        }
+        return cols;
+    }
 
     function nextDay() {
         setCurrentDay(addDays(currentDay, +1))
@@ -25,7 +34,7 @@ export const CalendarDay = () => {
     const renderHeader = () => {
         const dateFormat = "B..BBB";
         return (
-            <div className="header">
+            <div className="header bg-gray-600">
                 <div className="icon cursor-pointer ml-5" onClick={prevDay}> chevron_left </div>
                 <span className=""> {format(currentDay, dateFormat)} </span>
                 <div className="icon cursor-pointer" onClick={nextDay}> chevron_right </div>
@@ -34,74 +43,47 @@ export const CalendarDay = () => {
     }
 
 
-    /*function renderCells() {
+    
+    const renderCells = () => {
         let columns = [] as any;
 
-
-        for (let i = 1; i <= 24; i++) {
-            columns.push(
-                <div className="span-1 text-black font-bold flex-grow p-5 text-center"> {i}:00 </div>
-            )
+        for (let i = 4; i <= 27; i++) {
+            if(i != 4) {
+                columns.push(
+                    <div className="border-l-2 border-black text-center text-black text-sm sm:text-base font-bold p-1 sm:p-2"> {i%24}:00 </div>
+                )
+            } else {
+                columns.push(
+                    <div className="text-center text-black text-sm sm:text-base font-bold p-1 sm:p-2"> {i%24}:00 </div>
+                )
+            }
+            
         }
 
-
         return (
-            <div className="mx-5 mt-5">
-                <div
-                    className="flex items-center flex-row flex-nowrap border-2 border-black divide-x-2 divide-black bg-darkgrey">
+            <div className="flex flex-col flex-none max-h-screen mx-5 mt-5 bg-sky-100 ">
+                <div className="grid grid-cols-24 overflow-y-auto overflow-x-hidden gap-x-0 gap-y-2 pb-1 grid-flow-row border border-black bg-darkgrey">
                     {columns}
-                </div>
-                <div className="relative flex flex-col border-2 border-black divide-y divide-black bg-lightgrey">
-                    <div className="">
-                        <div className=" text-white font-bold col-span-5"> 00</div>
-                    </div>
-
-                    <div className="left-10 text-white font-bold"> 00</div>
-
+                    
+                    {shifts.map((user, index) => {
+                        if(index%2 == 0) {
+                            return <div className="flex rounded-lg ml-1 border-2 border-black col-start-1 col-end-8 p-3 bg-amber-200 text-black font-bold justify-center" key={user.name}> {user.name} {index} </div> 
+                        } else {
+                            return <div className="flex rounded-lg ml-1 border-2 border-black col-start-4 col-end-12 p-3 bg-sky-200 text-black font-bold justify-center" key={user.name}> {user.name} {index} </div>
+                        }
+                    })}
+                    
+                             
                 </div>
             </div>
 
         )
-    }*/
-        function renderGrid() {
-
-            let columns = [] as any;
-
-            let counter = 0;
-            while (true) {
-                columns.push(
-                    <div className="text-black font-bold p-3 justify-center"> {counter}:00 </div>
-                )
-                if(counter == 24) {
-                    break;
-                }
-                counter++;
-            }
-
-
-            return (
-                <div className="mx-5 mt-5 flex-grow-1 flex-shrink-1 overflow-x-scroll">
-                    <div className="flex border-2 border-black divide-x-2 divide-black bg-darkgrey ">
-                            {columns}
-                    </div>
-                    <div className="flex flex-col border-2
-                        border-black bg-lightgrey">
-                        <div className="border-2 border-blue-500">
-                            test
-                        </div>
-                        <div className="">
-                            test
-                        </div>
-                        <div className="">
-                            yoikk
-                        </div>
-                    </div>
-                </div>
-
-            )
-        }
+    }
 
     return (
-        renderGrid()
+        <div className="flex flex-col flex-auto bg-white">
+            {renderHeader()}
+            {renderCells()}
+        </div>
     );
 }

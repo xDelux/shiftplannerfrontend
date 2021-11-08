@@ -20,9 +20,9 @@ export const MainBody = () => {
 
                 <div className="flex flex-col min-h-screen">
                     <Header collapsed={navBarCollapsed} burgerMenuOnClick={setNavBarCollapsed} />
-                    <div className="flex flex-row flex-grow">
+                    <div className="flex flex-row flex-auto">
                         <NavigationBar collapsed={navBarCollapsed} />
-                        <div className="flex flex grow w-screen bg-white dark:bg-secondary transition duration-500 ease-in-out ">
+                        <div className="flex w-screen bg-white dark:bg-secondary transition duration-500 ease-in-out ">
                             <Route exact path="/" render={() => <Home />} />
                             <Route exact path="/calendar" render={() => <Calendar />} />
                             <Route exact path="/calendarDay" render={() => <CalendarDay />} />
