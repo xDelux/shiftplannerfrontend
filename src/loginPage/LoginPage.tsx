@@ -6,8 +6,10 @@ import PopoverHeader from '@material-tailwind/react/PopoverHeader'
 import Axios from 'axios'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router'
+//@ts-ignore
 import { authUser } from '../../../shiftplanserver/src/server'
 import { UserContext } from '../Context/UserContext'
+import { RegisterForm } from '../components/RegisterForm/RegisterView'
 
 export const LoginPage = () => {
     //@ts-ignore
@@ -26,18 +28,7 @@ export const LoginPage = () => {
         getFruit()
     }, [])
 
-    const butRef = useRef()
-
-    const registerView = () => {
-        ;<Popover placement="top" ref={butRef}>
-            <PopoverContainer>
-                <PopoverHeader> Register </PopoverHeader>
-                <PopoverBody>
-                    <div>test</div>
-                </PopoverBody>
-            </PopoverContainer>
-        </Popover>
-    }
+    
 
     const history = useHistory()
     return (
@@ -70,9 +61,8 @@ export const LoginPage = () => {
                     </div>
                     <div className="mb-3 flex justify-between">
                         <p className="text-white text-xs underline">Forgot password?</p>
-                        <Button className=" text-white text-xs underline" onClick={registerView} ref={butRef}>
-                            Register
-                        </Button>
+                        <RegisterForm> Register </RegisterForm>
+                        
                     </div>
 
                     <div className="mb-3">

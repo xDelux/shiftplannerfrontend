@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react'
+//@ts-ignore
 import { authUser } from '../../../shiftplanserver/src/server'
 
 export const UserContext = createContext({})

@@ -5,7 +5,6 @@ import { Calendar } from './components/calendar_Components/Calendar/Calendar_Mon
 import { Header } from './Header'
 import { Home } from './Home'
 import { LoginPage } from './loginPage/LoginPage'
-// import {userContext, userContextProvider} from './Context/userContext'
 /* import { TestingFruit } from './serverFruit/testingFruit' */
 import { NavigationBar } from './NavigationBar'
 
