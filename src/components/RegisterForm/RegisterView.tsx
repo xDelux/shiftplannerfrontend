@@ -10,12 +10,15 @@ export const RegisterForm = (props) => {
    
    
    return (
-      <button className="text-white text-xs underline" onClick={() => setPopUp(true)}>
-         {props.children}
-         <PopUp trigger={popUp} setTrigger={setPopUp} >
+      <div>
+         <button className="text-white text-xs underline" onClick={() => setPopUp(true)}>
+            {props.children}      
+         </button>
+         <PopUp trigger={popUp} setTrigger={setPopUp}>
             <p> TESTER </p>
          </PopUp>
-      </button>
+      </div>
+      
       
    )
    
