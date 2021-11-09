@@ -7,6 +7,7 @@ import { Home } from './Home'
 import { LoginPage } from './loginPage/LoginPage'
 /* import { TestingFruit } from './serverFruit/testingFruit' */
 import { NavigationBar } from './NavigationBar'
+import {Employees} from "./Employees";
 
 export const MainBody = () => {
     let [navBarCollapsed, setNavBarCollapsed] = useState(false)
@@ -23,7 +24,7 @@ export const MainBody = () => {
                         <div className="flex w-screen bg-white dark:bg-secondary transition duration-500 ease-in-out ">
                             <Route exact path="/" render={() => <Home />} />
                             <Route exact path="/calendar" render={() => <Calendar />} />
-                            <Route exact path="/calendarDay" render={() => <CalendarDay />} />
+                            <Route exact path="/Employees" render={() => <Employees />} />
                         </div>
                     </div>
                 </div>
