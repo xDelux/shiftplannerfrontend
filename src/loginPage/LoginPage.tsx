@@ -6,8 +6,9 @@ import PopoverHeader from '@material-tailwind/react/PopoverHeader'
 import Axios from 'axios'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router'
-import { authUser } from '../../../ShiftplannerServer/src/server'
+import { authUser } from '../../../shiftplanserver/src/Types'
 import { UserContext } from '../Context/UserContext'
+
 
 export const LoginPage = () => {
     //@ts-ignore

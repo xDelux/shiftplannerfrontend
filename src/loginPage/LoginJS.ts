@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Axios from 'axios'
 // @ts-ignore
-import { IFruitData, User, RequestSession } from './../../ShiftplannerServer/src/server'
+import { IFruitData, User, RequestSession } from './../../shiftplanserver/src/server'
 // import { userContext } from '../Context/userContext';
 
 export const Register = ():void => {
