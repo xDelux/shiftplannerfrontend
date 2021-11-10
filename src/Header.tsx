@@ -26,7 +26,7 @@ export const Header = (props) => {
         <div className="flex items-center h-20 bg-lightPrimary dark:bg-primary transition duration-500 ease-in-out">
             <div className="w-10 h-10 mx-2 ml-5">
                 <button type="button" onClick={() => props.burgerMenuOnClick(!props.collapsed)}>
-                    <MenuIcon fontSize="large" className="hover:text-white fill-current text-gray-400 h-20"/>
+                    <MenuIcon fontSize="large" className="hover:text-white fill-current text-gray-300 h-20"/>
                 </button>
             </div>
             <h1 className="font-bold text-5xl text-white ml-2">ShiftPlanner</h1>

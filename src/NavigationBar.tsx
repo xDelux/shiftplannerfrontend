@@ -10,6 +10,16 @@ import { useHistory } from 'react-router-dom'
 export const NavigationBar = (props) => {
     let [collapsed, setCollapsed] = useState(false);
     const history = useHistory()
+    const titles = ["Hjem", "Vagtplan", "Dine vagter", "Medarbejdere"]
+
+    const IconHeader = (title) => {
+        <p className="pl-3">{title}</p>
+    };
+
+    function handleCollapse() {
+
+        setCollapsed(!collapsed);
+    }
 
     if(!props.collapsed) {
         return (
@@ -30,11 +40,13 @@ export const NavigationBar = (props) => {
                             <div className="flex flex-row"><BadgeIcon/> <p className="pl-3">Mine vagter</p> </div>
                         </li>
                     </button>
+                    <button>
                         <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4">
-                        <button onClick={() => history.push(`/employeeTable`)}>
+                        <button onClick={() => history.push(`/employees`)}>
                             <div className="flex flex-row"><GroupIcon/> <p className="pl-3">Medarbejere</p> </div>
                         </button>
                         </li>
+                    </button>
                 </ul>
                 <div className="flex flex-grow"></div>
 
