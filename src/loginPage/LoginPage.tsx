@@ -1,43 +1,30 @@
-import Button from '@material-tailwind/react/Button'
-import Popover from '@material-tailwind/react/Popover'
-import PopoverBody from '@material-tailwind/react/PopoverBody'
-import PopoverContainer from '@material-tailwind/react/PopoverContainer'
-import PopoverHeader from '@material-tailwind/react/PopoverHeader'
 import Axios from 'axios'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router'
-import { authUser } from '../../../shiftplanserver/src/Types'
+import { RegisterForm } from '../components/RegisterForm/RegisterView'
 import { UserContext } from '../Context/UserContext'
-
 
 export const LoginPage = () => {
     //@ts-ignore
     const { user } = useContext(UserContext)
+    const [authentication, setAuthentication] = useState({
+        username: '',
+        password: '',
+    })
 
-    const [data, SetData] = useState<authUser[]>([])
+    const doLogin = async () => {
+        const result = (
+            await Axios.post<
+                | { success: true; data: { user: { id: string; role: boolean } } }
+                | { success: false; errorMessage: string }
+            >('http://localhost:8080/login', authentication, { withCredentials: true })
+        ).data
 
-    const getFruit = async () => {
-        const result = (await Axios.get<authUser[]>('http://localhost:8080/fruit', { withCredentials: true })).data
-
-        SetData(result)
-        console.log(result)
-    }
-
-    useEffect(() => {
-        getFruit()
-    }, [])
-
-    const butRef = useRef()
-
-    const registerView = () => {
-        ;<Popover placement="top" ref={butRef}>
-            <PopoverContainer>
-                <PopoverHeader> Register </PopoverHeader>
-                <PopoverBody>
-                    <div>test</div>
-                </PopoverBody>
-            </PopoverContainer>
-        </Popover>
+        if (result.success) {
+            console.log('id', result.data.user.id)
+            console.log('adminRole', result.data.user.role)
+            history.push('/')
+        }
     }
 
     const history = useHistory()
@@ -53,6 +40,7 @@ export const LoginPage = () => {
                         <input
                             className="w-full mx-auto bg-secondary border-borderColor border-opacity-100 appearance-none border-2 rounded p-2 text-grey-darker md:text-white"
                             id="username"
+                            onChange={e => setAuthentication({ ...authentication, username: e.target.value })}
                             type="text"
                             placeholder="Username"
                         />
@@ -66,14 +54,13 @@ export const LoginPage = () => {
                             className="w-full mx-auto bg-secondary border-borderColor border-opacity-100 appearance-none border-2 rounded p-2 text-grey-darker md:text-white"
                             id="password"
                             type="password"
+                            onChange={e => setAuthentication({ ...authentication, password: e.target.value })}
                             placeholder="**********"
                         />
                     </div>
                     <div className="mb-3 flex justify-between">
                         <p className="text-white text-xs underline">Forgot password?</p>
-                        <Button className=" text-white text-xs underline" onClick={registerView} ref={butRef}>
-                            Register
-                        </Button>
+                        <RegisterForm> Register </RegisterForm>
                     </div>
 
                     <div className="mb-3">
@@ -100,7 +87,7 @@ export const LoginPage = () => {
                     <div className="mt-8 divide-y divide-yellow-500">
                         <button
                             className="flex rounded-lg bg-borderColor pr-2 py-2 m-auto w-52 hover:bg-hoverEffect"
-                            onClick={() => history.push('/')}
+                            onClick={() => doLogin()}
                         >
                             <p className="flex m-auto text-white">Sign In</p>
                         </button>

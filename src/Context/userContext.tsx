@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react'
-import { authUser } from '../../../shiftplanserver/src/server'
+import { authUser } from '../../../shiftplanserver/src/Types'
 
 export const UserContext = createContext({})
 
@@ -12,7 +12,7 @@ const UserContextProvider = props => {
         setUser({ id, role })
     }
 
-    return <UserContext.Provider value={{ user, setUserData }}>{props.children}</UserContext.Provider>
+    return <UserContext.Provider value={{ user, setUser }}>{props.children}</UserContext.Provider>
 }
 
 export default UserContextProvider

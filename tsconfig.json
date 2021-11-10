@@ -17,5 +17,5 @@
         "noFallthroughCasesInSwitch": true,
         "noImplicitAny": false
     },
-    "include": ["./src/**/*.ts"]
+    "include": ["./src/**/*.ts", "src/loginPage/LoginJS.tsx"]
 }
