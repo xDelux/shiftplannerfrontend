@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Axios from 'axios'
-
+// @ts-ignore
 import { IRegisterProps } from '../../../shiftplanserver/src/auth'
 // import { userContext } from '../Context/userContext';
 

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { PopUp } from '../PopUp/PopUp'
 import { Register } from '../../loginPage/LoginJS'
-
+// @ts-ignore
 import { IRegisterProps } from '../../../../shiftplanserver/src/auth'
 
 
