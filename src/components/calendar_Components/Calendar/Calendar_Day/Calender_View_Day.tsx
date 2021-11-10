@@ -2,8 +2,7 @@ import React, {useState, useEffect} from "react";
 import { addMonths, format, isSameMonth, addDays, startOfWeek, endOfWeek, startOfMonth, endOfMonth, getWeek, getISOWeek, isSameDay  } from "date-fns";
 import {Link} from "react-router-dom";
 import Axios from 'axios'
-// @ts-ignore
-import { IFruitData, User } from './../../ShiftplannerServer/src/server'
+import { IFruitData, User } from '../../../ShiftplannerServer/src/server'
 export const CalendarDay = () => {
 
     const [currentDay, setCurrentDay] = useState(new Date());

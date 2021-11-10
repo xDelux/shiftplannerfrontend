@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import HomeIcon from '@mui/icons-material/Home'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import BadgeIcon from '@mui/icons-material/Badge'
 import GroupIcon from '@mui/icons-material/Group'
 
 import { useHistory } from 'react-router-dom'
-
 
 
 export const NavigationBar = (props) => {
@@ -43,7 +42,7 @@ export const NavigationBar = (props) => {
                     </button>
                     <button>
                         <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4">
-                        <button onClick={() => history.push(`/employees`)}>
+                        <button onClick={() => history.push(`/employeeTable`)}>
                             <div className="flex flex-row"><GroupIcon/> <p className="pl-3">Medarbejere</p> </div>
                         </button>
                         </li>
