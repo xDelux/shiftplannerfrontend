@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import { createContext, useState } from 'react'
 //@ts-ignore
 import { authUser } from '../../../shiftplanserver/src/server'
 
