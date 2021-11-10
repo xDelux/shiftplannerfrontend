@@ -5,7 +5,7 @@ import { CalendarDay } from './components/calendar_Components/Calender_View_Day'
 import { Header } from './Header'
 import { Home } from './Home'
 import { LoginPage } from './loginPage/LoginPage'
-import {employeeTable} from './components/table_Components/Table'
+import {EmployeeTable} from './components/table_Components/Table'
 
 /* import { TestingFruit } from './serverFruit/testingFruit' */
 import { NavigationBar } from './NavigationBar'
@@ -26,7 +26,7 @@ export const MainBody = () => {
                             <Route exact path="/" render={() => <Home />} />
                             <Route exact path="/calendar" render={() => <Calendar />} />
                             <Route exact path="/calendarDay" render={() => <CalendarDay />} />
-                            <Route exact path="/employeeTable" render={() => <employeeTable />} />
+                            <Route exact path="/employeeTable" render={() => <EmployeeTable />} />
                         </div>
                     </div>
                 </div>

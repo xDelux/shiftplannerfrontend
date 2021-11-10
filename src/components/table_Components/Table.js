@@ -1,7 +1,8 @@
 import {useTable} from 'react-table'
 import React from 'react'
+import { useHistory } from 'react-router'
 
-export const employeeTable = () => {
+export const EmployeeTable = () => {
 
     const columns = React.useMemo(
         () => [
@@ -82,7 +83,9 @@ export const employeeTable = () => {
         []
     )
 
-    const tableInstance = useTable({columns, data})
+    const tableInstance
+        = useTable({columns, data}
+        )
 
     const {
         getTableProps,
@@ -92,13 +95,22 @@ export const employeeTable = () => {
         prepareRow,
     } = tableInstance
 
+
     return (
         <div className="bg-lightgrey px-8 py-8 m-10">
             <p>Tilføj medarbejder</p>
-            <div className="flex  ">
-                <p>Fjern medarbejder</p>
-                <p className="text-right">Search</p>
-            </div>
+            <p>Fjern medarbejder</p>
+                <div className="sm:flex sm:gap-x-2">
+                    {headerGroups.map((headerGroup) =>
+                        headerGroup.headers.map((column) =>
+                            column.Filter ? (
+                                <div className="mt-2 sm:mt-0" key={column.id}>
+                                    {column.render("Filter")}
+                                </div>
+                            ) : null
+                        )
+                    )}
+                </div>
             <table class="rounded border border-black" {...getTableProps()}>
                 <thead class="bg-darkgrey">
                 {// Loop over the header rows
@@ -108,7 +120,7 @@ export const employeeTable = () => {
                             {// Loop over the headers in each row
                                 headerGroup.headers.map(column => (
                                     // Apply the header cell props
-                                    <th class="rounded-t-lg px-24 py-3 text-gray-500" {...column.getHeaderProps()}>
+                                    <th class=" px-24 py-3 text-gray-500" {...column.getHeaderProps()}>
                                         {// Render the header
                                             column.render('Header')}
                                     </th>
