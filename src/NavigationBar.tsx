@@ -1,11 +1,14 @@
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import BadgeIcon from '@mui/icons-material/Badge'
+import PageView from '@mui/icons-material/Delete'
 import GroupIcon from '@mui/icons-material/Group'
 import HomeIcon from '@mui/icons-material/Home'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { UserContext } from './Context/UserContext'
 
 export const NavigationBar = props => {
+    const { user } = useContext(UserContext)
     let [collapsed, setCollapsed] = useState(false)
     const history = useHistory()
     const titles = ['Hjem', 'Vagtplan', 'Dine vagter', 'Medarbejdere']
@@ -52,6 +55,29 @@ export const NavigationBar = props => {
                             </button>
                         </li>
                     </button>
+                    {user.role && (
+                        <button>
+                            <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4">
+                                <button onClick={() => history.push(`/Employees`)}>
+                                    <div className="flex flex-row">
+                                        <PageView /> <p className="pl-3">Testing</p>{' '}
+                                    </div>
+                                </button>
+                            </li>
+                        </button>
+                    )}
+
+                    {user.role && (
+                        <button>
+                            <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4">
+                                <button onClick={() => history.push(`/Employees`)}>
+                                    <div className="flex flex-row">
+                                        <PageView /> <p className="pl-3">Testing</p>{' '}
+                                    </div>
+                                </button>
+                            </li>
+                        </button>
+                    )}
                 </ul>
                 <div className="flex flex-grow"></div>
             </div>

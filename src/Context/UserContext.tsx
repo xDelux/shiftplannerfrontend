@@ -1,16 +1,19 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, Dispatch, SetStateAction, useState } from 'react'
 import { authUser } from '../../../shiftplanserver/src/Types'
 
-export const UserContext = createContext({})
+type authContextValue = {
+    user: authUser
+    setUser: Dispatch<SetStateAction<authUser>>
+}
+
+export const UserContext = createContext<authContextValue | undefined>(undefined)
 
 const UserContextProvider = props => {
     const [user, setUser] = useState<authUser>({
         id: 'Hej',
-        role: true,
+        role: false,
+        loggedOn: false,
     })
-    const setUserData = (id: string, role: boolean) => {
-        setUser({ id, role })
-    }
 
     return <UserContext.Provider value={{ user, setUser }}>{props.children}</UserContext.Provider>
 }

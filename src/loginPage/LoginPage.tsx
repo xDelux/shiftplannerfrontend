@@ -1,12 +1,14 @@
 import Axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router'
+import { authUser } from '../../../shiftplanserver/src/Types'
 import { RegisterForm } from '../components/RegisterForm/RegisterView'
 import { UserContext } from '../Context/UserContext'
 
 export const LoginPage = () => {
-    //@ts-ignore
-    const { user } = useContext(UserContext)
+    const history = useHistory()
+
+    const { user, setUser } = useContext(UserContext)
     const [authentication, setAuthentication] = useState({
         username: '',
         password: '',
@@ -21,13 +23,16 @@ export const LoginPage = () => {
         ).data
 
         if (result.success) {
-            console.log('id', result.data.user.id)
-            console.log('adminRole', result.data.user.role)
+            const formatUser: authUser = { id: result.data.user.id, role: result.data.user.role, loggedOn: true }
+            setUser(formatUser)
+            console.log('Loggin user data' + user.id, user.role, user.loggedOn)
             history.push('/')
+        } else {
+            //@ts-ignore
+            alert(result.errorMessage)
         }
     }
 
-    const history = useHistory()
     return (
         <div className="flex bg-secondary h-screen w-screen">
             <div className="w-auto h-auto bg-loginColor mx-auto my-auto rounded-t-xl rounded-b-xl">
