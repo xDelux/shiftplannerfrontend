@@ -91,6 +91,7 @@ export const LoginPage = () => {
                     </div>
                     <div className="mt-8 divide-y divide-yellow-500">
                         <button
+                            type="submit"
                             className="flex rounded-lg bg-borderColor pr-2 py-2 m-auto w-52 hover:bg-hoverEffect"
                             onClick={() => doLogin()}
                         >

@@ -48,7 +48,7 @@ export const NavigationBar = props => {
                     </button>
                     <button>
                         <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4">
-                            <button onClick={() => history.push(`/Employees`)}>
+                            <button onClick={() => history.push(`/employees`)}>
                                 <div className="flex flex-row">
                                     <GroupIcon /> <p className="pl-3">Medarbejere</p>{' '}
                                 </div>
@@ -58,7 +58,7 @@ export const NavigationBar = props => {
                     {user.role && (
                         <button>
                             <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4">
-                                <button onClick={() => history.push(`/Employees`)}>
+                                <button onClick={() => history.push(`/employees`)}>
                                     <div className="flex flex-row">
                                         <PageView /> <p className="pl-3">Testing</p>{' '}
                                     </div>
@@ -70,7 +70,7 @@ export const NavigationBar = props => {
                     {user.role && (
                         <button>
                             <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4">
-                                <button onClick={() => history.push(`/Employees`)}>
+                                <button onClick={() => history.push(`/employees`)}>
                                     <div className="flex flex-row">
                                         <PageView /> <p className="pl-3">Testing</p>{' '}
                                     </div>

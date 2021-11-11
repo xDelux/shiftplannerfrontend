@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
+import { CalendarDay } from './components/calendar_Components/Calendar/Calendar_Day/Calender_View_Day'
 import { Calendar } from './components/calendar_Components/Calendar/Calendar_Month/Calendar_View_Month'
-import { EmployeeTable } from './components/table_Components/Table'
 import { UserContext } from './Context/UserContext'
 import { Employees } from './Employees'
 import { Header } from './Header'
@@ -9,7 +9,6 @@ import { Home } from './Home'
 import { LoginPage } from './loginPage/LoginPage'
 /* import { TestingFruit } from './serverFruit/testingFruit' */
 import { NavigationBar } from './NavigationBar'
-import { PrivateRoute } from './PrivateRoute'
 
 export const MainBody = () => {
     const { user, setUser } = useContext(UserContext)
@@ -28,7 +27,11 @@ export const MainBody = () => {
                         <div className="flex flex-row flex-auto">
                             <NavigationBar collapsed={navBarCollapsed} />
                             <div className="flex w-screen bg-white dark:bg-secondary transition duration-500 ease-in-out ">
-                                <Route
+                                <Route exact path="/" render={() => <Home />} />
+                                <Route exact path="/calendar" render={() => <Calendar />} />
+                                <Route exact path="/calendarDay" render={() => <CalendarDay />} />
+                                <Route exact path="/employees" render={() => <Employees />} />
+                                {/* <Route
                                     exact
                                     path="/"
                                     render={() => (
@@ -47,6 +50,13 @@ export const MainBody = () => {
                                 />
                                 <PrivateRoute
                                     exact
+                                    path="/calendarDay"
+                                    auth={() => user.loggedOn}
+                                    renderNoAuth={noAuth}
+                                    render={() => <CalendarDay />}
+                                />
+                                <PrivateRoute
+                                    exact
                                     path="/employeeTable"
                                     auth={() => user.loggedOn}
                                     renderNoAuth={noAuth}
@@ -54,11 +64,11 @@ export const MainBody = () => {
                                 />
                                 <PrivateRoute
                                     exact
-                                    path="/Employees"
+                                    path="/employees"
                                     auth={() => user.loggedOn}
                                     renderNoAuth={noAuth}
                                     render={() => <Employees />}
-                                />
+                                /> */}
                             </div>
                         </div>
                     </div>

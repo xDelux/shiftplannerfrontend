@@ -9,7 +9,7 @@ export const Employees = () => {
 
     const getAllUsers = async () => {
         const result = (
-            await Axios.get<EmployeeDisplay[]>('http://localhost:8080/getAllUsers', { withCredentials: true })
+            await Axios.get<EmployeeDisplay[]>('http://localhost:8080/getEmployees', { withCredentials: true })
         ).data
 
         setData(result)
