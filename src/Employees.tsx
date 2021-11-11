@@ -1,6 +1,7 @@
 import Axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+// @ts-ignore
 import { EmployeeDisplay } from '../../shiftplanserver/src/Types'
 
 export const Employees = () => {

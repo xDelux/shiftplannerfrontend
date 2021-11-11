@@ -9,6 +9,8 @@ import { Home } from './Home'
 import { LoginPage } from './loginPage/LoginPage'
 /* import { TestingFruit } from './serverFruit/testingFruit' */
 import { NavigationBar } from './NavigationBar'
+import {MyProfile} from "./MyProfile";
+import {Settings} from "./Settings";
 
 export const MainBody = () => {
     const { user, setUser } = useContext(UserContext)
@@ -31,6 +33,8 @@ export const MainBody = () => {
                                 <Route exact path="/calendar" render={() => <Calendar />} />
                                 <Route exact path="/calendarDay" render={() => <CalendarDay />} />
                                 <Route exact path="/employees" render={() => <Employees />} />
+                                <Route exact path="/myprofile" render={() => <MyProfile/>} />
+                                <Route exact path="/settings" render={() => <Settings/>} />
                                 {/* <Route
                                     exact
                                     path="/"
