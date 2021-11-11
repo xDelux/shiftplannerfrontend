@@ -1,11 +1,22 @@
 import Axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { EmployeeDisplay } from '../../shiftplanserver/src/Types'
+import { UserContext } from './Context/UserContext'
 
 export const Employees = () => {
+    const { user, setUser } = useContext(UserContext)
     const [data, setData] = useState<EmployeeDisplay[]>([])
     const history = useHistory()
+
+    // const getOneUser = async () => {
+    //     const result = (
+    //         await Axios.post<User>('http://localhost:8080/login', user.id, { withCredentials: true })
+    //     ).data
+
+    //     setData(result)
+    //     console.log(result)
+    // }
 
     const getAllUsers = async () => {
         const result = (
