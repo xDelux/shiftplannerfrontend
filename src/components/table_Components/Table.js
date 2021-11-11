@@ -9,6 +9,13 @@ export const EmployeeTable = () => {
             {
                 Header: "Image",
                 accessor: "image",
+                Cell: props => (
+                    <img
+                        src={props.row.original.image}
+                        width={60}
+                        alt='Employee'
+                    />
+                )
             },
             {
                 Header: "Name",
@@ -37,42 +44,42 @@ export const EmployeeTable = () => {
     const data = React.useMemo(
         () => [
             {
-                image:1,
+                image:"https://freesvg.org/img/abstract-user-flat-4.png",
                 username: 'Brin',
                 bday: 26,
                 jobposition: 'din mor',
                 phone: '12345678',
                 mail: ' email@email.com'
             }, {
-                image: 1,
+                image: "https://freesvg.org/img/abstract-user-flat-4.png",
                 username: 'Jac',
                 bday: 22,
                 jobposition: 'din mor',
                 phone: '12345678',
                 mail: ' email@email.com'
             }, {
-                image: 1,
+                image: "https://freesvg.org/img/abstract-user-flat-4.png",
                 username: 'Mik',
                 bday: 40,
                 jobposition: 'din mor',
                 phone: '12345678',
                 mail: ' email@email.com'
             }, {
-                image: 1,
+                image: "https://freesvg.org/img/abstract-user-flat-4.png",
                 username: 'Stef',
                 bday: 30,
                 jobposition: 'din mor',
                 phone: '12345678',
                 mail: ' email@email.com'
             }, {
-                image: 1,
+                image: "https://freesvg.org/img/abstract-user-flat-4.png",
                 username: 'Shan',
                 bday: 32,
                 jobposition: 'din mor',
                 phone: '12345678',
                 mail: ' email@email.com'
             }, {
-                image: 1,
+                image: "https://freesvg.org/img/abstract-user-flat-4.png",
                 username: 'yieks',
                 bday: 37,
                 jobposition: 'din mor',
@@ -136,7 +143,7 @@ export const EmployeeTable = () => {
                         prepareRow(row)
                         return (
                             // Apply the row props
-                            <tr {...row.getRowProps()}>
+                            <tr class="text-center" {...row.getRowProps()}>
                                 {// Loop over the rows cells
                                     row.cells.map(cell => {
                                         // Apply the cell props
