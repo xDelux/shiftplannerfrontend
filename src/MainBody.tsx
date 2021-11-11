@@ -4,6 +4,7 @@ import { CalendarDay } from './components/calendar_Components/Calendar/Calendar_
 import { Calendar } from './components/calendar_Components/Calendar/Calendar_Month/Calendar_View_Month'
 import { UserContext } from './Context/UserContext'
 import { Employees } from './Employees'
+import { EmployeeTable } from './components/table_Components/Table'
 import { Header } from './Header'
 import { Home } from './Home'
 import { LoginPage } from './loginPage/LoginPage'
@@ -30,6 +31,7 @@ export const MainBody = () => {
                                 <Route exact path="/" render={() => <Home />} />
                                 <Route exact path="/calendar" render={() => <Calendar />} />
                                 <Route exact path="/calendarDay" render={() => <CalendarDay />} />
+                                <Route exact path="/employeeTable" render={() => <EmployeeTable />} />
                                 <Route exact path="/employees" render={() => <Employees />} />
                                 {/* <Route
                                     exact
