@@ -18,6 +18,7 @@ module.exports = {
                 googleHover: '#817F7F',
                 lightPrimary: '#5f78f3',
                 lightSecondary: '#9cc1f1',
+                lightTertiary: '#b3c2de',
                 lightgrey: '#C4C4C4',
                 darkgrey: '#ADACAB',
                 transparent: "transparent",

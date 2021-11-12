@@ -46,7 +46,7 @@ export const MyProfile = () => {
                     <h3 className=" text-3xl text-black">*************</h3>
 
                     <button
-                        className="mt-5 px-4 py-1.5 rounded-lg border-2 border-lightPrimary bg-lightSecondary font-bold text-black text-2xl hover:bg-opacity-80">Redigér
+                        className="mt-5 px-4 py-1.5 text-2xl rounded-lg border-2 border-lightPrimary bg-lightSecondary font-bold text-black  hover:bg-opacity-80">Redigér
                     </button>
                 </div>
             </div>
