@@ -3,9 +3,34 @@ import React from 'react'
 import { useHistory } from 'react-router'
 import {Button, PageButton} from "./Button.js";
 import { ChevronDoubleLeftIcon, ChevronLeftIcon, ChevronRightIcon, ChevronDoubleRightIcon } from '@heroicons/react/solid'
+import Axios from "axios";
 //import {columns, data} from "./Data.js"
 
 export const EmployeeTable = () => {
+
+    //backend
+
+    /*const getEmployee = async () => {
+        const result = (
+            await Axios.get<
+            | { success: true; data: { user: { id: string; role: boolean } } }
+            | { success: false; errorMessage: string }
+            >('http://localhost:8080/login', authentication, { withCredentials: true })
+        ).data
+
+        if (result.success) {
+            const formatUser: authUser = { id: result.data.user.id, role: result.data.user.role, loggedOn: true }
+            setUser(formatUser)
+            console.log('Loggin user data' + user.id, user.role, user.loggedOn)
+            history.push('/')
+        } else {
+            //@ts-ignore
+            alert(result.errorMessage)
+        }
+    }*/
+
+
+    //frontend
 
     const columns = React.useMemo(
         () => [
@@ -202,7 +227,7 @@ export const EmployeeTable = () => {
                                     setPageSize(Number(e.target.value))
                                 }}
                             >
-                                {[5, 10, 20].map(pageSize => (
+                                {[5, 10, 20, 50, 100].map(pageSize => (
                                     <option key={pageSize} value={pageSize}>
                                         Show {pageSize}
                                     </option>
