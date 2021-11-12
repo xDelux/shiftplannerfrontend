@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { useHistory } from 'react-router'
 import { authUser } from '../../../shiftplanserver/src/Types'
 import { RegisterForm } from '../components/RegisterForm/RegisterView'
