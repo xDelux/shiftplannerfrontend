@@ -15,7 +15,7 @@ export const RegisterForm = props => {
     })
 
     const doRegister = async () => {
-        const result = await Axios.post('http://localhost:8080/register', formData, { withCredentials: true })
+        const result = await Axios.post('http://localhost:8080/api/register', formData, { withCredentials: true })
         console.log(result)
         return true
     }

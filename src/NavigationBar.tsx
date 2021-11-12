@@ -21,11 +21,16 @@ export const NavigationBar = props => {
         setCollapsed(!collapsed)
     }
 
+    const triggerStuff = () => {
+        console.log(user.id + user.loggedOn + user.role)
+        history.push(`/`)
+    }
+
     if (!props.collapsed) {
         return (
             <div className="flex flex-col w-64 bg-lightPrimary dark:bg-primary text-white text-lg select-none transition duration-500 ease-in-out">
                 <ul className="flex flex-col flex-fill px-2 gap-1 inline-block align-top pt-2">
-                    <button onClick={() => history.push(`/`)}>
+                    <button onClick={() => triggerStuff()}>
                         <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4 ">
                             <div className="flex flex-row">
                                 <HomeIcon /> <p className="pl-3">Hjem</p>{' '}

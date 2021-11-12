@@ -8,9 +8,11 @@ import { Employees } from './Employees'
 import { Header } from './Header'
 import { Home } from './Home'
 import { LoginPage } from './loginPage/LoginPage'
+import { MyProfile } from './MyProfile'
 /* import { TestingFruit } from './serverFruit/testingFruit' */
 import { NavigationBar } from './NavigationBar'
 import { PrivateRoute } from './PrivateRoute'
+import { Settings } from './Settings'
 
 export const MainBody = () => {
     const { user, setUser } = useContext(UserContext)
@@ -29,6 +31,12 @@ export const MainBody = () => {
                         <div className="flex flex-row flex-auto">
                             <NavigationBar collapsed={navBarCollapsed} />
                             <div className="flex w-screen bg-white dark:bg-secondary transition duration-500 ease-in-out ">
+                                {/* <Route exact path="/" render={() => <Home />} />
+                                <Route exact path="/calendar" render={() => <Calendar />} />
+                                <Route exact path="/calendarDay" render={() => <CalendarDay />} />
+                                <Route exact path="/employees" render={() => <Employees />} />
+                                <Route exact path="/myprofile" render={() => <MyProfile />} />
+                                <Route exact path="/settings" render={() => <Settings />} /> */}
                                 <Route
                                     exact
                                     path="/"
@@ -45,6 +53,20 @@ export const MainBody = () => {
                                     auth={() => user.loggedOn}
                                     renderNoAuth={noAuth}
                                     render={() => <Calendar />}
+                                />
+                                <PrivateRoute
+                                    exact
+                                    path="/settings"
+                                    auth={() => user.loggedOn}
+                                    renderNoAuth={noAuth}
+                                    render={() => <Settings />}
+                                />
+                                <PrivateRoute
+                                    exact
+                                    path="/myprofile"
+                                    auth={() => user.loggedOn}
+                                    renderNoAuth={noAuth}
+                                    render={() => <MyProfile />}
                                 />
                                 <PrivateRoute
                                     exact

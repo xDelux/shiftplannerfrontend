@@ -19,7 +19,7 @@ export const LoginPage = () => {
             await Axios.post<
                 | { success: true; data: { user: { id: string; role: boolean } } }
                 | { success: false; errorMessage: string }
-            >('http://localhost:8080/login', authentication, { withCredentials: true })
+            >('http://localhost:8080/api/login', authentication, { withCredentials: true })
         ).data
 
         if (result.success) {

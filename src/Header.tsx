@@ -5,12 +5,14 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import PersonIcon from '@mui/icons-material/Person';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import {Switch} from "@mui/material";
+import {useHistory} from "react-router-dom";
 
 
 
 export const Header = (props) => {
     let [expanded, setExpanded] = useState(false);
     let [theme, setTheme] = useState('light');
+    const history = useHistory()
     let newTheme;
     const root = window.document.documentElement;
 
@@ -51,8 +53,8 @@ export const Header = (props) => {
                 expanded
                     ? (
                         <div  className="absolute grid grid-cols-1 top-20 right-3 bg-lightSecondary dark:bg-primary rounded-sm border-l-2 border-r-2 border-b-2 text-white transition duration-500 ease-in-out">
-                            <div className="p-4 hover:bg-lightPrimary dark:hover:bg-secondary"><button><PersonIcon/>Min profil</button></div>
-                            <div className="p-4 hover:bg-lightPrimary dark:hover:bg-secondary"><button><SettingsIcon/>Indstillinger</button></div>
+                            <div className="p-4 hover:bg-lightPrimary dark:hover:bg-secondary"><button onClick={() => history.push(`/myprofile`)}><PersonIcon/>Min profil</button></div>
+                            <div className="p-4 hover:bg-lightPrimary dark:hover:bg-secondary"><button onClick={() => history.push(`/settings`)}><SettingsIcon/>Indstillinger</button></div>
                             <div className="p-2.5 hover:bg-lightPrimary dark:hover:bg-secondary"><DarkModeIcon/>Dark mode <Switch className="p-0" onClick={() => applyTheme()}/></div>
                         </div> )
                     : null
