@@ -9,7 +9,6 @@ import { Header } from './Header'
 import { Home } from './Home'
 import { LoginPage } from './loginPage/LoginPage'
 import { MyProfile } from './MyProfile'
-/* import { TestingFruit } from './serverFruit/testingFruit' */
 import { NavigationBar } from './NavigationBar'
 import { PrivateRoute } from './PrivateRoute'
 import { Settings } from './Settings'
@@ -34,6 +33,7 @@ export const MainBody = () => {
                                 {/* <Route exact path="/" render={() => <Home />} />
                                 <Route exact path="/calendar" render={() => <Calendar />} />
                                 <Route exact path="/calendarDay" render={() => <CalendarDay />} />
+                                <Route exact path="/employeeTable" render={() => <EmployeeTable />} />
                                 <Route exact path="/employees" render={() => <Employees />} />
                                 <Route exact path="/myprofile" render={() => <MyProfile />} />
                                 <Route exact path="/settings" render={() => <Settings />} /> */}

@@ -1,6 +1,7 @@
 import { addDays, format } from 'date-fns'
 import React, { useState } from 'react'
 import { User } from '../../../../../../ShiftplannerServer/src/Types'
+
 export const CalendarDay = () => {
     const [currentDay, setCurrentDay] = useState(new Date())
 

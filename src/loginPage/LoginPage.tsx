@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { useHistory } from 'react-router'
 import { authUser } from '../../../shiftplanserver/src/Types'
 import { RegisterForm } from '../components/RegisterForm/RegisterView'
@@ -32,6 +32,13 @@ export const LoginPage = () => {
             alert(result.errorMessage)
         }
     }
+    
+    
+    const [isOpen, setIsOpen] = useState(false);
+    const togglePop = () => {
+        setIsOpen(!isOpen)
+    }
+
 
     return (
         <div className="flex bg-secondary h-screen w-screen">
@@ -65,7 +72,9 @@ export const LoginPage = () => {
                     </div>
                     <div className="mb-3 flex justify-between">
                         <p className="text-white text-xs underline">Forgot password?</p>
-                        <RegisterForm> Register </RegisterForm>
+                        <button className="text-white text-xs underline" onClick={togglePop}> Register </button>
+                        {isOpen && <RegisterForm popValues={{isOpen, setIsOpen}} />}
+                        {/* // <RegisterForm> Register </RegisterForm> */}
                     </div>
 
                     <div className="mb-3">

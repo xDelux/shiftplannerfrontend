@@ -1,14 +1,49 @@
-import {useTable} from 'react-table'
+import {useTable, usePagination} from 'react-table'
 import React from 'react'
 import { useHistory } from 'react-router'
+import {Button, PageButton} from "./Button.js";
+import { ChevronDoubleLeftIcon, ChevronLeftIcon, ChevronRightIcon, ChevronDoubleRightIcon } from '@heroicons/react/solid'
+import Axios from "axios";
+//import {columns, data} from "./Data.js"
 
 export const EmployeeTable = () => {
+
+    //backend
+
+    /*const getEmployee = async () => {
+        const result = (
+            await Axios.get<
+            | { success: true; data: { user: { id: string; role: boolean } } }
+            | { success: false; errorMessage: string }
+            >('http://localhost:8080/login', authentication, { withCredentials: true })
+        ).data
+
+        if (result.success) {
+            const formatUser: authUser = { id: result.data.user.id, role: result.data.user.role, loggedOn: true }
+            setUser(formatUser)
+            console.log('Loggin user data' + user.id, user.role, user.loggedOn)
+            history.push('/')
+        } else {
+            //@ts-ignore
+            alert(result.errorMessage)
+        }
+    }*/
+
+
+    //frontend
 
     const columns = React.useMemo(
         () => [
             {
                 Header: "Image",
                 accessor: "image",
+                Cell: props => (
+                    <img
+                        src={props.row.original.image}
+                        width={60}
+                        alt='Employee'
+                    />
+                )
             },
             {
                 Header: "Name",
@@ -37,42 +72,42 @@ export const EmployeeTable = () => {
     const data = React.useMemo(
         () => [
             {
-                image:1,
+                image:"https://freesvg.org/img/abstract-user-flat-4.png",
                 username: 'Brin',
                 bday: 26,
                 jobposition: 'din mor',
                 phone: '12345678',
                 mail: ' email@email.com'
             }, {
-                image: 1,
+                image: "https://freesvg.org/img/abstract-user-flat-4.png",
                 username: 'Jac',
                 bday: 22,
                 jobposition: 'din mor',
                 phone: '12345678',
                 mail: ' email@email.com'
             }, {
-                image: 1,
+                image: "https://freesvg.org/img/abstract-user-flat-4.png",
                 username: 'Mik',
                 bday: 40,
                 jobposition: 'din mor',
                 phone: '12345678',
                 mail: ' email@email.com'
             }, {
-                image: 1,
+                image: "https://freesvg.org/img/abstract-user-flat-4.png",
                 username: 'Stef',
                 bday: 30,
                 jobposition: 'din mor',
                 phone: '12345678',
                 mail: ' email@email.com'
             }, {
-                image: 1,
+                image: "https://freesvg.org/img/abstract-user-flat-4.png",
                 username: 'Shan',
                 bday: 32,
                 jobposition: 'din mor',
                 phone: '12345678',
                 mail: ' email@email.com'
             }, {
-                image: 1,
+                image: "https://freesvg.org/img/abstract-user-flat-4.png",
                 username: 'yieks',
                 bday: 37,
                 jobposition: 'din mor',
@@ -84,7 +119,8 @@ export const EmployeeTable = () => {
     )
 
     const tableInstance
-        = useTable({columns, data}
+        = useTable({columns, data},
+        usePagination,
         )
 
     const {
@@ -93,6 +129,17 @@ export const EmployeeTable = () => {
         headerGroups,
         rows,
         prepareRow,
+
+        page,
+        canPreviousPage,
+        canNextPage,
+        pageOptions,
+        pageCount,
+        gotoPage,
+        nextPage,
+        previousPage,
+        setPageSize,
+        state,
     } = tableInstance
 
 
@@ -131,17 +178,19 @@ export const EmployeeTable = () => {
                 {/* Apply the table body props */}
                 <tbody class="divide-y bg-lightgrey" {...getTableBodyProps()}>
                 {// Loop over the table rows
-                    rows.map(row => {
+                    // while using page, insted of rows
+                    // it shows only the rows for the active page - the amount of rows is a page
+                    page.map(row => {
                         // Prepare the row for display
                         prepareRow(row)
                         return (
                             // Apply the row props
-                            <tr {...row.getRowProps()}>
+                            <tr class="text-center" {...row.getRowProps()}>
                                 {// Loop over the rows cells
                                     row.cells.map(cell => {
                                         // Apply the cell props
                                         return (
-                                            <td class="p-4 text-center" {...cell.getCellProps()}>
+                                            <td class="p-4" {...cell.getCellProps()}>
                                                 {// Render the cell contents
                                                     cell.render('Cell')}
                                             </td>
@@ -152,6 +201,80 @@ export const EmployeeTable = () => {
                     })}
                 </tbody>
             </table>
+
+
+
+            {/* Pagination */}
+            <div className="py-3 flex items-center justify-between">
+                <div className="flex-1 flex justify-between sm:hidden">
+                    {/*Is showed then the there is a small window width*/}
+                    <Button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</Button>
+                    <Button onClick={() => nextPage()} disabled={!canNextPage}>Next</Button>
+                </div>
+                <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                    <div className="flex gap-x-2 items-baseline">
+                        <span className="text-sm text-gray-700">
+                            {/*Page x out of y*/}
+                          Page <span className="font-medium">{state.pageIndex + 1}</span> of <span className="font-medium">{pageOptions.length}</span>
+                        </span>
+                        <label>
+                            {/*amount of listed employees*/}
+                            <span className="sr-only">Items Per Page</span>
+                            <select
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                value={state.pageSize}
+                                onChange={e => {
+                                    setPageSize(Number(e.target.value))
+                                }}
+                            >
+                                {[5, 10, 20, 50, 100].map(pageSize => (
+                                    <option key={pageSize} value={pageSize}>
+                                        Show {pageSize}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                            <PageButton
+                                className="rounded-l-md"
+                                onClick={() => gotoPage(0)}
+                                disabled={!canPreviousPage}
+                            >
+                                {/*To the first page - dobbelt left arrow*/}
+                                <span className="sr-only">First</span>
+                                <ChevronDoubleLeftIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                            </PageButton>
+                            <PageButton
+                                onClick={() => previousPage()}
+                                disabled={!canPreviousPage}
+                            >
+                                {/*Go one page back - one left arrow*/}
+                                <span className="sr-only">Previous</span>
+                                <ChevronLeftIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                            </PageButton>
+                            <PageButton
+                                onClick={() => nextPage()}
+                                disabled={!canNextPage
+                                }>
+                                {/*Go one page forward - one right arrow*/}
+                                <span className="sr-only">Next</span>
+                                <ChevronRightIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                            </PageButton>
+                            <PageButton
+                                className="rounded-r-md"
+                                onClick={() => gotoPage(pageCount - 1)}
+                                disabled={!canNextPage}
+                            >
+                                {/*Go to last page - dobbel right arrow*/}
+                                <span className="sr-only">Last</span>
+                                <ChevronDoubleRightIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                            </PageButton>
+                        </nav>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
