@@ -26,28 +26,28 @@ export const NavigationBar = props => {
             <div className="flex flex-col w-64 bg-lightPrimary dark:bg-primary text-white text-lg select-none transition duration-500 ease-in-out">
                 <ul className="flex flex-col flex-fill px-2 gap-1 inline-block align-top pt-2">
                     <button onClick={() => history.push(`/`)}>
-                        <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4 ">
+                        <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4 transition duration-500 ease-in-out">
                             <div className="flex flex-row">
                                 <HomeIcon /> <p className="pl-3">Hjem</p>{' '}
                             </div>
                         </li>
                     </button>
                     <button onClick={() => history.push(`/calendar`)}>
-                        <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4">
+                        <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4 transition duration-500 ease-in-out">
                             <div className="flex flex-row">
                                 <AssignmentIcon /> <p className="pl-3">Vagtplan</p>{' '}
                             </div>
                         </li>
                     </button>
                     <button onClick={() => history.push(`/login`)}>
-                        <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4">
+                        <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4 transition duration-500 ease-in-out">
                             <div className="flex flex-row">
                                 <BadgeIcon /> <p className="pl-3">Mine vagter</p>{' '}
                             </div>
                         </li>
                     </button>
                     <button>
-                        <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4">
+                        <li className="flex h-16 hover:bg-lightSecondary dark:hover:bg-secondary rounded-sm px-5 py-4 transition duration-500 ease-in-out">
                             <button onClick={() => history.push(`/employeeTable`)}>
                                 <div className="flex flex-row">
                                     <GroupIcon /> <p className="pl-3">Medarbejere</p>{' '}
