@@ -12,11 +12,10 @@ export const PopUp = (props) => {
             
             <div className="flex flex-col justify-center items-center ">
                <span className="font-bold text-xl text-black p-2 rounded"> {props.formtype} </span>
-             
+         
                {props.children}
             </div>
-            
          </div>
       </div>
-   ) : <div></div>
+   ) : (<> </>)
 }
