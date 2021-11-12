@@ -16,7 +16,7 @@ export const Header = (props) => {
     let newTheme;
     const root = window.document.documentElement;
 
-    function applyTheme() {
+    export function applyTheme() {
         newTheme = theme === 'light' ? 'dark' : 'light';
         root.classList.remove(theme);
         root.classList.add(newTheme)
